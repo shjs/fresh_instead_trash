@@ -1,0 +1,17 @@
+﻿@model List<mvc.Models.viewmodel.Recipe>
+@using mvc.Models.viewmodel
+
+
+@{
+    ViewData["Title"] = "Registrieren";
+}
+
+<div class="container_register">
+    <ul>
+        <li><label><b>Vorname</b></label></li>
+        <input type="text" placeholder="Bitte gib deinen Vornamen ein" name="Vorname" required class="register_inputBox">
+        <li><label><b>Nachname</b></label></li>
+        <input type="text" placeholder="Bitte gib deinen Nachnamen ein" name="Nachname" required class="register_inputBox">
+    </ul>
+</div>
+

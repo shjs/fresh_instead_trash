@@ -1,0 +1,168 @@
+﻿@{
+    ViewData["Title"] = "AdminArea";
+}
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+<script>
+        $(document).ready(function () {
+            getRecipeList()
+            getUserList()
+        });
+
+    function getRecipeList() {
+        $.ajax({
+            url: '/getallrecipes',
+            type: 'GET',
+            dataType: 'json',
+            success: function (recipes) {
+                $.each(recipes, function (index, recipe) {
+                    recipeAddRow(recipe);
+                });
+            }
+        });
+     }
+        function recipeAddRow(recipe) {
+            $("#recipesTableBody").append(
+                recipeBuildTableRow(recipe));
+        }
+
+        function recipeBuildTableRow(recipe) {
+            var newRow = "<tr>" +
+                "<td>" + recipe.recipeID + "</td>" +
+                "<td>" + recipe.recipename + "</td>" +
+                "<td>" + recipe.calories + "</td>" +
+                "<td>" + recipe.price + "</td>" +
+                "<td>" + recipe.duration + "</td>" +
+                "<td>" + recipe.vegan + "</td>" +
+                "<td>" + recipe.ingredients + "</td>" +
+                "<td>" +
+                "<button type='button' " +
+                "onclick='getRecipe(this);'" + "id='btn'" +
+                "class='btn btn-default' " +
+                "data-id='" + recipe.recipeID + "'>" +
+                "Detailansicht" +
+                "</td>" +
+                "<td>" +
+                "</button>" +
+                "<button type='button' " +
+                "onclick='DeleteRecipe(this);'" + "id='btn'" +
+                "class='btn btn-default' " +
+                "data-id='" + recipe.recipeID + "'>" +
+                "Löschen" +
+                "</button>" +
+                "</td>" +
+                "</tr>";
+
+            return newRow;
+        }
+        function getRecipe(item) {
+            $("#divRecipe").empty();
+            var url = "/getonerecipe";
+            var recipeid = $(item).data("id");
+            $.get(url, { id: recipeid }, function (r) {
+                $("#result").html("<h1>" + r.recipename + "<h1>" + "</p>" + " <p>Kalorien:  " + r.calories + "</p>" + "<p>Dauer: " + r.duration + " " + "Minuten" + "</p>" + "<p> Preis: " + r.price + "€" + "</p>");
+            });
+        }
+        function DeleteRecipe(item) {
+        var url = "/deleterecipe";
+            var id = $(item).data("id");
+            $.get(url, { id: id }, function () {
+                $("#recipesTableBody").empty();
+                getRecipeList();
+            });
+        }
+
+    function getUserList()
+        {
+        $.ajax({
+            url: '/user/getallusers',
+            type: 'GET',
+            dataType: 'json',
+            success: function (users) {
+                $.each(users, function (index, user) {
+                    userAddRow(user);
+                });
+            }
+        });
+     }
+    function userAddRow(user) {
+        $("#userTableBody").append(
+                userBuildTableRow(user));
+        }
+
+        function userBuildTableRow(user) {
+            var newRow = "<tr>" +
+                "<td>" + user.userId + "</td>" +
+                "<td>" + user.firstname + "</td>" +
+                "<td>" + user.lastname + "</td>" +
+                "<td>" + user.age + "</td>" +
+                "<td>" + user.gender + "</td>" +
+                "<td>" + user.birthdate + "</td>" +
+                "<td>" + user.email + "</td>" +
+                "<td>" +
+                "</button>" +
+                "<button type='button' " +
+                "onclick='DeleteUser(this);'" + "id='btn'" +
+                "class='btn btn-default' " +
+                "data-id='" + user.userId + "'>" +
+                "Löschen" +
+                "</button>" +
+                "</tr>";
+            return newRow;
+        }
+    function DeleteUser(item) {
+            var url = "/user/deleteuser";
+            var id = $(item).data("id");
+            $.get(url, { id: id }, function () {
+                $("#userTableBody").empty();
+                getUserList();
+            });
+        }
+</script>
+<div id="divRecipe">
+        <h1>Alle Rezepte</h1>
+    <form>
+        <table id="recipesTable" style="border: 1px solid #999" cellpadding="1">
+            <thead>
+                <tr>
+                    <td>Id </td>
+                    <td> Name </td>
+                    <td> Kalorien </td>
+                    <td> Preis </td>
+                    <td> Dauer </td>
+                    <td> Vegan </td>
+                    <td> Zutaten </td>
+                    <td> </td>
+                </tr>
+            </thead>
+            <tbody id="recipesTableBody">
+            </tbody>
+        </table>
+    </form>
+ <input type="button" class="btn btn-info" value="Rezept hinzufügen" onclick="location.href='@Url.Action("InsertRecipe", "Home")'" />
+</div>
+<div id="divUsers">
+        <h1>Alle User</h1>
+    <form>
+        <table id="userTable" style="border: 1px solid #999" cellpadding="1">
+            <thead>
+                <tr>
+                    <td>Id </td>
+                    <td> Vorname </td>
+                    <td> Nachname </td>
+                    <td> Alter </td>
+                    <td> Geschlecht </td>
+                    <td> Geburtsdatum </td>
+                    <td> Email-Addresse </td>
+                </tr>
+            </thead>
+            <tbody id="userTableBody">
+            </tbody>
+        </table>
+    </form>
+</div>
+<div id="result">
+
+
+</div>
+

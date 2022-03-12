@@ -1,0 +1,41 @@
+﻿@model mvc.Models.viewmodel.Login;
+@using mvc.Models.viewmodel;
+@{
+    ViewBag.Title = "LoginAdmin";
+}
+
+
+ <body>
+            <div id="containerLogin">
+                @using (Html.BeginForm())
+{
+                <b id="headline">Anmelden</b>
+                <table>
+                    <thead id="headerTable">
+                          <tr>
+                            <td id="writing" colspan="3"> @Html.ValidationSummary()</td>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <tr>
+                            <td id="writing">@Html.LabelFor(u => u.UsernameOrEMail, "Email-Adresse:")</td>
+                            <td id="inputBox">@Html.TextBoxFor(u => u.UsernameOrEMail)</td>
+                            <td>@Html.ValidationMessageFor(u => u.UsernameOrEMail)</td>
+                        </tr>
+                        <tr>
+                            <td id="writing">@Html.LabelFor(u => u.Password, "Passwort:")</td>
+                            <td id="inputBox">@Html.PasswordFor(u => u.Password)</td>
+                            <td>@Html.ValidationMessageFor(u => u.Password)</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input id="submit" type="submit" value="Absenden" />
+                                <input id="reset" type="reset" value="Abbrechen" />
+                            </td>
+                        </tr>              
+                    </tbody>
+                </table>
+           
+}
+ </div>
+        </body>

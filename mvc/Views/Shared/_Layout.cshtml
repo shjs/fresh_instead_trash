@@ -1,0 +1,62 @@
+﻿@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+<!DOCTYPE html>
+<html lang="de-at">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - mvc</title>
+        <link href="~/css/site.css" rel="stylesheet" type="text/css" />
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+ <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav>
+    <img class="Logo" src='~/images/logo.png'alt="FRESH STATT TRASH"height="200px" />
+        
+            
+        
+            <ul class="nav-links">
+                <li>
+                    <a asp-controller="Home"asp-action="Index">HOME</a>
+                </li>
+                <li>
+                    <a asp-controller="Home"asp-action="Countries">Worauf hast du heute Lust?</a>
+                </li>
+                <li>
+                    <a asp-controller="Home"asp-action="allrecipes">Alle Rezepte</a>
+                </li>
+                <li>
+                    <a asp-controller="Home"asp-action="Privacy">ÜBER UNS</a>
+
+                </li>
+                
+                
+            </ul>
+            </nav>
+        </header>
+
+        
+   <!-- <div class="maincss">-->
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+   <!--< </div>-->
+
+    <footer>
+        
+                    <a href="https://www.instagram.com/futterprojekt/"id="imagelink_footer">
+                        <img src="~/images/social-media.png" alt="Instagram"/>
+                    </a>
+                    <a asp-controller="User"asp-action="loginadmin"id="adminlink">Admin</a>
+           
+
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

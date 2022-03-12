@@ -1,0 +1,89 @@
+﻿@model mvc.Models.viewmodel.Recipe;
+@using mvc.Models.viewmodel;
+@{
+    ViewBag.Title = "InsertArticle";
+}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+@using (Html.BeginForm())
+{
+        <div id="containerInsertArticle">
+            <table>
+
+                <thead id="headerTable">
+
+                    <tr>
+                        <td id="writing" colspan="3" @Html.ValidationSummary()></td>
+
+                    </tr>
+                </thead>
+
+                <tbody id="tableBody">
+                    <tr>
+                        <td id="writing">@Html.LabelFor(r => r.Recipename, "Rezeptname")</td>
+                        <td id="inputBox">@Html.TextBoxFor(r => r.Recipename)</td>
+                        @*einzelne Fehlermeldung direkt beim Element anzeigen*@
+                        <td>@Html.ValidationMessageFor(a => a.Recipename)</td>
+                    </tr>
+                    <tr>
+                        <td id="writing">@Html.LabelFor(r => r.Calories, "Kalorien")</td>
+                        <td id="inputBox">@Html.TextBoxFor(r => r.Calories)</td>
+                        <td>@Html.ValidationMessageFor(r => r.Calories)</td>
+                    </tr>
+                    <tr>
+                        <td id="writing">@Html.LabelFor(r => r.Price, "Preis")</td>
+                        <td id="inputBox">@Html.TextBoxFor(r => r.Price)</td>
+                        <td>@Html.ValidationMessageFor(r => r.Price)</td>
+                    </tr>
+                    <tr>
+                        <td id="writing">@Html.LabelFor(r => r.Duration, "Dauer")</td>
+                        <td id="inputBox">@Html.TextBoxFor(r => r.Duration, new { type = "date" })</td>
+                        <td>@Html.ValidationMessageFor(r => r.Duration)</td>
+                    </tr>
+                    <tr>
+                        <td id="writing">@Html.LabelFor(r => r.Vegan, "Vegan")</td>
+                        <td id="inputBox">@Html.CheckBoxFor(r => r.Vegan, new {@checked = true })</td>
+                        <td>@Html.ValidationMessageFor(r => r.Vegan)</td>
+                    </tr>
+                    <tr>
+                        <td id="writing">@Html.LabelFor(r => r.Vegetarian, "Vegetarisch")</td>
+                        <td id="inputBox">@Html.CheckBoxFor(r => r.Vegetarian, new {@checked = true })</td>
+                        <td>@Html.ValidationMessageFor(r => r.Vegetarian)</td>
+                    </tr>
+                    <tr>
+                        <td id="writing">@Html.LabelFor(r => r.Occasion, "Anlass")</td>
+                        <td id="inputBox"><select asp-for="Occasion" asp-items="Html.GetEnumSelectList<Occasion>()" class="form-control"></select></td>
+                        <td>@Html.ValidationMessageFor(r => r.Occasion)</td>
+                    </tr>
+                    <tr>
+                        <td id="writing">@Html.LabelFor(r => r.Regional, "Regional")</td>
+                        <td id="inputBox">@Html.CheckBoxFor(r => r.Regional, new {@checked = true })</td>
+                        <td>@Html.ValidationMessageFor(r => r.Regional)</td>
+                    </tr>
+                    <tr>
+                        <td id="writing">@Html.LabelFor(r => r.Origin, "Herkunft")</td>
+                        <td id="inputBox"><td id="inputBox"><select asp-for="Origin" asp-items="Html.GetEnumSelectList<Origin>()" class="form-control"></select></td>
+                        <td>@Html.ValidationMessageFor(r => r.Origin)</td>
+                    </tr>
+                    <tr>
+                        <td id="writing">@Html.LabelFor(r => r.Instructions, "Beschreibung")</td>
+                        <td id="inputBox">@Html.TextAreaFor(r => r.Instructions)</td>
+                        <td>@Html.ValidationMessageFor(r => r.Instructions)</td>
+                    </tr>
+                    <tr>
+                        <td id="writing">@Html.LabelFor(r => r.Ingredients, "Zutaten")</td>
+                        <td id="inputBox">@Html.TextAreaFor(r => r.Ingredients)</td>
+                        <td>@Html.ValidationMessageFor(r => r.Ingredients)</td>
+                    </tr>
+
+                    <tr>
+                        <td colspan="2">
+                            <input id="submit" type="submit" value="Absenden" />
+                            <input id="reset" type="reset" value="Abbrechen" />
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                </tfoot>
+            </table>
+        </div>
+    }

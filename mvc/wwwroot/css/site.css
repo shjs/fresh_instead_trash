@@ -1,0 +1,499 @@
+﻿body{
+    margin:0px;
+    padding: 0px;
+    box-sizing:border-box;
+}
+container_allrecipes{
+    margin:0px;
+    
+}
+
+nav{
+    display: flex;
+    justify-content:space-around;
+    height:110px;
+    background-color: rgba(190,210,96,1);
+    font-family: 'Amatic SC', cursive;
+
+}
+.nav-links a{
+
+text-decoration: solid;
+font-size:30px;
+letter-spacing:3px;
+color:white;
+padding-right:60px;
+ 
+}
+
+    a:hover {
+        transform:scale(1.05);
+    }
+.nav-links li{
+    list-style:none;
+
+}
+.nav-links{
+    display:flex;
+    justify-content:space-around;
+    width:80%;
+    padding-right:100px;
+    padding-top:20px;
+    
+}
+/*.maincss{
+    min-height:630px;
+    overflow-x:hidden;
+    
+     
+}
+    */
+footer{
+    background-color: rgba(190,210,96,1);
+    min-height:100px;
+}
+#imagelink_footer{
+    margin-left:25px;
+    margin-top:30px;
+    float:left;
+
+}
+#adminlink{
+    float:right;
+    margin-top:30px;
+    margin-right:25px;
+    margin-bottom:10px;
+    text-decoration:none;
+    color:white;
+}
+
+
+
+.index_brote_image{
+    max-height:450px;
+    display:flex;
+    justify-content:center;
+    padding-top:100px;
+}
+h3{
+    text-align:center;
+    font-family: 'Roboto', sans-serif;
+    color:gray;
+    text-decoration:none;
+    letter-spacing:3px;
+}
+p{
+        text-align:center;
+    font-family: 'Roboto', sans-serif;
+    color:gray;
+    letter-spacing:1px;
+}
+.Logo{
+padding-top:10px;
+padding-left:30px;
+position:relative;
+
+}
+#container_countries{
+    background-color:#f9f9f9;
+    display:flex;
+    margin:10px 300px 100px 300px;
+    min-height:500px;
+}
+#CountriesSonstigeRezepte{
+  font-size:20px;
+  padding-left:40px;
+
+
+}
+.container_register{
+      background-color:beige;
+    display:flex;
+    margin:150px 200px 100px 200px;
+    min-height:300px;
+}
+#register{
+
+    text-decoration: solid;
+font-size:30px;
+letter-spacing :3px;
+color:white;
+padding-right:20px;
+padding-top:40px;
+}
+.registerInputBox{
+    width:200px;
+    height:20px;
+   border:none;
+}
+
+#countrybox{
+    border:1px solid black;
+
+}
+.countryImage{
+    width:230px;
+    height:119px;
+    margin:0 auto;
+    position:relative;
+
+}
+    #tableCountries ul li:hover {
+        transform: scale(1.05);
+    }
+#tableCountries{
+width:80%;
+overflow:hidden;
+margin:0px auto;
+padding-top:80px;
+padding-bottom:80px;
+position:relative;
+
+}
+#tableCountries ul{
+margin:0 auto 0 auto;
+padding:0px;
+}
+#tableCountries ul li{
+list-style:none;
+float:left;
+width:232px;
+height:150px;
+border:1px solid black;
+margin:40px 25px 0px 25px;
+box-sizing:border-box;
+cursor: pointer;
+overflow:hidden;
+
+}
+@media only screen and (max-width: 1550px){
+    #tableCountries ul li{
+
+    }
+
+
+}
+
+
+.CountriesImagesHeader{
+    width:100%;
+    height:30px;
+    line-height:30px;
+    background:rgba(190,210,96,1);
+    text-align:center;
+    font-family: 'Roboto', sans-serif;
+    color:white;
+}
+#SearchBarBox{
+    width:500px;
+    height:60px;
+    margin:0px auto;
+    padding-top:30px;
+    box-sizing:border-box;
+}
+#searchBar{
+    height:40px;
+    width:450px;
+    border-radius:10px;
+    font-size:20px;
+    font-family: 'Roboto', sans-serif;
+    opacity:0.8;
+    float:left;
+    margin-left:3px;
+    
+}
+#SearchImage{
+    height:35px;
+    float:left;
+}
+.RecipeContainerItem{
+    height:140px;
+margin:50px auto;
+    width:600px;
+    font-family: 'Roboto', sans-serif;
+    cursor: pointer;
+    border-radius:10px;
+      background: linear-gradient(to bottom, white,rgba(236, 236, 236, 0.5));
+
+}
+.RecipeContainerItem:hover{
+    transform:scale(1.05);
+    border-color:rgba(190,210,96,1);
+    
+}
+
+h1{
+        color: rgba(190,210,96,1);
+        font-family: 'Amatic SC', cursive;
+        font-size:70px;
+        text-align:center;
+}
+#h1_1{margin-left:30px;}
+#h1_allrecipes{margin-left:30px;
+               color:white;
+               font-size:150px;
+}
+#RecipeImage{
+    height:110px;
+    position:relative;
+    float:left;
+    margin:15px 0 auto 10px;
+    border: 2px solid #d3d3d3;
+    min-width:165px;
+}
+#allrecipes_header{
+    width:50%;
+    position:absolute;
+    min-height:500px;
+    left:25%;
+    
+
+
+}
+
+
+
+#container_allrecipes{
+    display:flex;
+    margin:0px auto 100px;
+    min-height:800px;
+    background-image: url('../images/allrecipes_background.jpg');
+}
+#recipeBuildContainer{
+    display:flex;
+}
+
+#ContainerInformation_recipename{
+    font-weight:200;
+    font-size:28px;
+        color: black;
+    float:left;
+    margin:15px 0 0 30px;
+    margin-right:100px;
+    border-radius:5px;
+
+}
+#ContainerInformation_calories{
+    font-size:15px;
+    float:left;
+    margin:15px 0 0 ;
+    position:absolute;
+    color:black;
+    border-radius:5px;
+
+
+
+}
+#ContainerInformation_duration{
+    font-size:15px;
+    float:left;
+    margin:15px 0 0 ;
+    position:absolute;
+    color:black;
+    border-radius:5px;
+
+
+}
+#divRecipe_allrecipes{
+    margin:650px auto;
+}
+#divRecipe_countries{
+    margin:0px auto;
+    padding-top:10px;
+}
+.filter{
+    cursor: pointer;
+}
+#filterbox{
+    position:relative;
+    height:140px;
+    width:600px;
+   background: linear-gradient(to bottom, white,rgba(255,255,255,0.8));
+    margin:0px auto;
+    border-radius:10px;
+}
+.sort{
+    font-family: 'Roboto', sans-serif;
+     font-size:15px;
+     float:right;
+     height:15px;
+     position:relative;
+     margin-right:20px;
+}
+#Submitbutton{
+
+    
+    color:black;
+    font-family: 'Roboto', sans-serif;
+    width:100px;
+    height:25px;
+    float:right;
+    margin-right:25px;
+    margin-top:30px;
+    border-radius:3px;
+}
+#Submitbutton:hover{
+color:rgba(190,210,96,1);
+}
+
+h4{
+    font-family: 'Roboto', sans-serif;
+     font-size:25px;
+     margin:20px;
+     text-align:center;
+     color:rgba(190,210,96,1);
+     font-weight:400;
+     padding-top:10px;
+}
+.checkbox{
+    font-family: 'Roboto', sans-serif;
+     font-size:15px;
+     margin-left:20px;
+    cursor: pointer;
+    position:relative;
+    float:left;
+    height:15px;
+}
+.checkbox:hover{
+    color:rgba(190,210,96,1);
+}
+#container_onerecipe{
+    width:90%;
+    margin:0px auto;
+    padding-top:100px;
+    height:1000px;
+}
+#zutaten_onerecipe{
+    width:20%;
+    min-height:200px;
+    float:left;
+    margin-left:150px;
+    font-family: 'Roboto', sans-serif;
+    font-size:25px;
+    color:grey;
+
+}
+#beschreibung_onerecipe{
+    width:40%;
+    min-height:200px;
+    float:right;
+    margin-right:150px;
+    font-family: 'Roboto', sans-serif;
+    font-size:25px;
+    color:grey;
+
+}
+#image_onerecipe{
+    width:600px;
+    height:400px;
+    margin:0px auto;
+    overflow:hidden;
+
+}
+#recipename_onerecipe{
+ color: rgba(190,210,96,1);
+        font-family: 'Amatic SC', cursive;
+        font-size:100px;
+        text-align:center;
+
+}
+#header_onerecipe{
+    justify-content:center;
+    font-family: 'Roboto', sans-serif;
+     font-size:18px;
+     color:rgba(190,210,96,1);
+     font-weight:400;
+     
+}
+#RecipeImg_onerecipe{
+    height:400px;
+}
+#space_ingredients{
+    position:absolute;
+    margin-left:200px;
+
+}
+index_welcome_container{
+    width:80%;
+    margin:0px auto;
+    height:50px;
+    margin-top:100px
+    
+}
+#index_12tipps{
+    margin:150px auto;
+    width:60%;
+    min-height:100px;
+   padding-top:50px;
+}
+.index_12tipps_li{
+    text-decoration:none;
+    font-family: 'Roboto', sans-serif;
+    font-size:18px;
+    color:rgba(190,210,96,1);
+    color:grey;
+    margin:20px auto;
+    width:60%;
+    height:60px;
+    border-left:2px solid grey;
+    padding-left:10px;
+    background-color:white;
+    opacity:0.8;
+    border-radius:10px;
+}
+#container_12tipps{
+    background-image: url('../images/background_12tipps.jpg');
+    background-repeat:repeat;
+    margin-top:400px;
+    width:100%;
+}
+#zutaten_ablecoule{
+    width:100%;
+    margin:10px auto;
+}
+#instruction_list{
+    width:100%;
+}
+#instruction_list li:empty{
+    opacity:0;
+}
+#zutaten_tablebody td{
+    width:35px;
+}
+h5{
+    margin:20px auto;
+}
+#buttonBack{
+        color:black;
+    font-family: 'Roboto', sans-serif;
+    width:100px;
+    height:25px;
+    border-radius:3px;
+
+}
+#buttonBack:hover{
+    color:rgba(190,210,96,1);
+
+}
+.pb-3{
+    margin:0px;
+    padding:0px;
+    min-height:700px;
+}
+header{
+
+}
+main{
+    margin:0px;
+    padding:0px;
+
+}
+#containerLogin{
+    margin:100px auto;
+    width:300px;
+}
+#insertrecipe_container{
+    margin:100px auto;
+    width:400px;
+
+}

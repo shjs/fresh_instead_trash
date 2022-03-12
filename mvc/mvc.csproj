@@ -1,0 +1,180 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Custom' ">
+    <StartAction>Project</StartAction>
+    <ApplicationURL>http://localhost:5002</ApplicationURL>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Models\db\" />
+    <Folder Include="Models\db\sql\" />
+    <Folder Include="Models\viewmodel\" />
+    <Folder Include="Content\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="Views\User\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.0.0" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.0.0" />
+    <PackageReference Include="MySql.Data" Version="8.0.18" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
+    <PackageReference Include="System.ServiceModel.Syndication" Version="4.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Models\db\sql\database_dipl.sql" />
+    <None Remove="Content\site.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\images\adults_brainstorming_desk_1595_A1_Rectangle_4_pattern.png" />
+    <Content Remove="wwwroot\images\adults_brainstorming_desk_1595_A1_Rectangle_4_pattern%402x.png" />
+    <Content Remove="wwwroot\images\anton_nikolov_1391430_unsplash_A6_Rectangle_13_pattern.png" />
+    <Content Remove="wwwroot\images\anton_nikolov_1391430_unsplash_A6_Rectangle_13_pattern%402x.png" />
+    <Content Remove="wwwroot\images\erik_dungan_1243661_unsplash_A6_Rectangle_4_pattern.png" />
+    <Content Remove="wwwroot\images\erik_dungan_1243661_unsplash_A6_Rectangle_4_pattern%402x.png" />
+    <Content Remove="wwwroot\images\erik_dungan_1243661_unsplash_A9_Rectangle_2_pattern.png" />
+    <Content Remove="wwwroot\images\erik_dungan_1243661_unsplash_A9_Rectangle_2_pattern%402x.png" />
+    <Content Remove="wwwroot\images\food_3330889_1920_A5_Rectangle_10_pattern.png" />
+    <Content Remove="wwwroot\images\food_3330889_1920_A5_Rectangle_10_pattern%402x.png" />
+    <Content Remove="wwwroot\images\food_3330889_1920_A7_Rectangle_2_pattern.png" />
+    <Content Remove="wwwroot\images\food_3330889_1920_A7_Rectangle_2_pattern%402x.png" />
+    <Content Remove="wwwroot\images\food_712667_1920_A5_Rectangle_6_pattern.png" />
+    <Content Remove="wwwroot\images\food_712667_1920_A5_Rectangle_6_pattern%402x.png" />
+    <Content Remove="wwwroot\images\ID1200px_Flag_of_Russia_A4_Rectangle_19_pattern.png" />
+    <Content Remove="wwwroot\images\ID1200px_Flag_of_Russia_A4_Rectangle_19_pattern%402x.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Austria_A4_Rectangle_3_pattern.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Austria_A4_Rectangle_3_pattern%402x.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Croatia_A4_Rectangle_5_pattern.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Croatia_A4_Rectangle_5_pattern%402x.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Germany_A4_Rectangle_9_pattern.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Germany_A4_Rectangle_9_pattern%402x.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Japan_A4_Rectangle_15_pattern.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Japan_A4_Rectangle_15_pattern%402x.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Mexico_A4_Rectangle_11_pattern.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Mexico_A4_Rectangle_11_pattern%402x.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Mexico_A6_Rectangle_10_pattern.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Mexico_A6_Rectangle_10_pattern%402x.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_the_People_s__A4_Rectangle_7_pattern.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_the_People_s__A4_Rectangle_7_pattern%402x.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Turkey_A4_Rectangle_17_pattern.png" />
+    <Content Remove="wwwroot\images\ID2000px_Flag_of_Turkey_A4_Rectangle_17_pattern%402x.png" />
+    <Content Remove="wwwroot\images\index_brote.png" />
+    <Content Remove="wwwroot\images\italien_A4_Rectangle_23_pattern.png" />
+    <Content Remove="wwwroot\images\italien_A4_Rectangle_23_pattern%402x.png" />
+    <Content Remove="wwwroot\images\italien_A5_Rectangle_14_pattern.png" />
+    <Content Remove="wwwroot\images\italien_A5_Rectangle_14_pattern%402x.png" />
+    <Content Remove="wwwroot\images\josh_sorenson_637602_unsplash_A2_Rectangle_8_pattern.png" />
+    <Content Remove="wwwroot\images\josh_sorenson_637602_unsplash_A2_Rectangle_8_pattern%402x.png" />
+    <Content Remove="wwwroot\images\markus_spiske_706506_unsplash_A2_Rectangle_4_pattern%402x.png" />
+    <Content Remove="wwwroot\images\markus_spiske_706506_unsplash_A3_Rectangle_4_pattern.png" />
+    <Content Remove="wwwroot\images\markus_spiske_706506_unsplash_A3_Rectangle_4_pattern%402x.png" />
+    <Content Remove="wwwroot\images\mink_mingle_428426_unsplash_A2_Rectangle_6_pattern.png" />
+    <Content Remove="wwwroot\images\mink_mingle_428426_unsplash_A2_Rectangle_6_pattern%402x.png" />
+    <Content Remove="wwwroot\images\mink_mingle_428426_unsplash_A3_Rectangle_6_pattern.png" />
+    <Content Remove="wwwroot\images\mink_mingle_428426_unsplash_A3_Rectangle_6_pattern%402x.png" />
+    <Content Remove="wwwroot\images\OANV3M0_A6_Rectangle_8_pattern.png" />
+    <Content Remove="wwwroot\images\OANV3M0_A6_Rectangle_8_pattern%402x.png" />
+    <Content Remove="wwwroot\images\OANV3M0_A8_Rectangle_2_pattern.png" />
+    <Content Remove="wwwroot\images\OANV3M0_A8_Rectangle_2_pattern%402x.png" />
+    <Content Remove="wwwroot\images\ola_mishchenko_606865_unsplash_A0_Rectangle_5_pattern%402x.png" />
+    <Content Remove="wwwroot\images\pasta_4144384_1920_A5_Rectangle_8_pattern.png" />
+    <Content Remove="wwwroot\images\pasta_4144384_1920_A5_Rectangle_8_pattern%402x.png" />
+    <Content Remove="wwwroot\images\pinar_kucuk_1508332_unsplash_A5_Rectangle_4_pattern.png" />
+    <Content Remove="wwwroot\images\pinar_kucuk_1508332_unsplash_A5_Rectangle_4_pattern%402x.png" />
+    <Content Remove="wwwroot\images\sara_dubler_648800_unsplash_A10_Rectangle_2_pattern.png" />
+    <Content Remove="wwwroot\images\sara_dubler_648800_unsplash_A10_Rectangle_2_pattern%402x.png" />
+    <Content Remove="wwwroot\images\sara_dubler_648800_unsplash_A6_Rectangle_6_pattern.png" />
+    <Content Remove="wwwroot\images\sara_dubler_648800_unsplash_A6_Rectangle_6_pattern%402x.png" />
+    <Content Remove="wwwroot\images\serbien_A4_Rectangle_25_pattern.png" />
+    <Content Remove="wwwroot\images\serbien_A4_Rectangle_25_pattern%402x.png" />
+    <Content Remove="wwwroot\images\social-media.png" />
+    <Content Remove="wwwroot\images\spanien_A4_Rectangle_13_pattern.png" />
+    <Content Remove="wwwroot\images\spanien_A4_Rectangle_13_pattern%402x.png" />
+    <Content Remove="wwwroot\images\starter_606890_1920_A5_Rectangle_12_pattern.png" />
+    <Content Remove="wwwroot\images\starter_606890_1920_A5_Rectangle_12_pattern%402x.png" />
+    <Content Remove="wwwroot\images\usa_flagge_1_A4_Rectangle_21_pattern.png" />
+    <Content Remove="wwwroot\images\usa_flagge_1_A4_Rectangle_21_pattern%402x.png" />
+    <Content Remove="Views\Home\OneRecipe.cshtml" />
+    <Content Remove="Views\Home\InsertRecipes.cshtml" />
+    <Content Remove="Views\Home\Index123.cshtml" />
+    <Content Remove="Views\Home\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="wwwroot\images\adults_brainstorming_desk_1595_A1_Rectangle_4_pattern.png" />
+    <None Include="wwwroot\images\adults_brainstorming_desk_1595_A1_Rectangle_4_pattern%402x.png" />
+    <None Include="wwwroot\images\anton_nikolov_1391430_unsplash_A6_Rectangle_13_pattern.png" />
+    <None Include="wwwroot\images\anton_nikolov_1391430_unsplash_A6_Rectangle_13_pattern%402x.png" />
+    <None Include="wwwroot\images\erik_dungan_1243661_unsplash_A6_Rectangle_4_pattern.png" />
+    <None Include="wwwroot\images\erik_dungan_1243661_unsplash_A6_Rectangle_4_pattern%402x.png" />
+    <None Include="wwwroot\images\erik_dungan_1243661_unsplash_A9_Rectangle_2_pattern.png" />
+    <None Include="wwwroot\images\erik_dungan_1243661_unsplash_A9_Rectangle_2_pattern%402x.png" />
+    <None Include="wwwroot\images\food_3330889_1920_A5_Rectangle_10_pattern.png" />
+    <None Include="wwwroot\images\food_3330889_1920_A5_Rectangle_10_pattern%402x.png" />
+    <None Include="wwwroot\images\food_3330889_1920_A7_Rectangle_2_pattern.png" />
+    <None Include="wwwroot\images\food_3330889_1920_A7_Rectangle_2_pattern%402x.png" />
+    <None Include="wwwroot\images\food_712667_1920_A5_Rectangle_6_pattern.png" />
+    <None Include="wwwroot\images\food_712667_1920_A5_Rectangle_6_pattern%402x.png" />
+    <None Include="wwwroot\images\ID1200px_Flag_of_Russia_A4_Rectangle_19_pattern.png" />
+    <None Include="wwwroot\images\ID1200px_Flag_of_Russia_A4_Rectangle_19_pattern%402x.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Austria_A4_Rectangle_3_pattern.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Austria_A4_Rectangle_3_pattern%402x.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Croatia_A4_Rectangle_5_pattern.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Croatia_A4_Rectangle_5_pattern%402x.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Germany_A4_Rectangle_9_pattern.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Germany_A4_Rectangle_9_pattern%402x.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Japan_A4_Rectangle_15_pattern.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Japan_A4_Rectangle_15_pattern%402x.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Mexico_A4_Rectangle_11_pattern.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Mexico_A4_Rectangle_11_pattern%402x.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Mexico_A6_Rectangle_10_pattern.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Mexico_A6_Rectangle_10_pattern%402x.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_the_People_s__A4_Rectangle_7_pattern.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_the_People_s__A4_Rectangle_7_pattern%402x.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Turkey_A4_Rectangle_17_pattern.png" />
+    <None Include="wwwroot\images\ID2000px_Flag_of_Turkey_A4_Rectangle_17_pattern%402x.png" />
+    <None Include="wwwroot\images\index_brote.png" />
+    <None Include="wwwroot\images\italien_A4_Rectangle_23_pattern.png" />
+    <None Include="wwwroot\images\italien_A4_Rectangle_23_pattern%402x.png" />
+    <None Include="wwwroot\images\italien_A5_Rectangle_14_pattern.png" />
+    <None Include="wwwroot\images\italien_A5_Rectangle_14_pattern%402x.png" />
+    <None Include="wwwroot\images\josh_sorenson_637602_unsplash_A2_Rectangle_8_pattern.png" />
+    <None Include="wwwroot\images\josh_sorenson_637602_unsplash_A2_Rectangle_8_pattern%402x.png" />
+    <None Include="wwwroot\images\markus_spiske_706506_unsplash_A2_Rectangle_4_pattern%402x.png" />
+    <None Include="wwwroot\images\markus_spiske_706506_unsplash_A3_Rectangle_4_pattern.png" />
+    <None Include="wwwroot\images\markus_spiske_706506_unsplash_A3_Rectangle_4_pattern%402x.png" />
+    <None Include="wwwroot\images\mink_mingle_428426_unsplash_A2_Rectangle_6_pattern.png" />
+    <None Include="wwwroot\images\mink_mingle_428426_unsplash_A2_Rectangle_6_pattern%402x.png" />
+    <None Include="wwwroot\images\mink_mingle_428426_unsplash_A3_Rectangle_6_pattern.png" />
+    <None Include="wwwroot\images\mink_mingle_428426_unsplash_A3_Rectangle_6_pattern%402x.png" />
+    <None Include="wwwroot\images\OANV3M0_A6_Rectangle_8_pattern.png" />
+    <None Include="wwwroot\images\OANV3M0_A6_Rectangle_8_pattern%402x.png" />
+    <None Include="wwwroot\images\OANV3M0_A8_Rectangle_2_pattern.png" />
+    <None Include="wwwroot\images\OANV3M0_A8_Rectangle_2_pattern%402x.png" />
+    <None Include="wwwroot\images\ola_mishchenko_606865_unsplash_A0_Rectangle_5_pattern%402x.png" />
+    <None Include="wwwroot\images\pasta_4144384_1920_A5_Rectangle_8_pattern%402x.png" />
+    <None Include="wwwroot\images\pinar_kucuk_1508332_unsplash_A5_Rectangle_4_pattern.png" />
+    <None Include="wwwroot\images\pinar_kucuk_1508332_unsplash_A5_Rectangle_4_pattern%402x.png" />
+    <None Include="wwwroot\images\sara_dubler_648800_unsplash_A10_Rectangle_2_pattern.png" />
+    <None Include="wwwroot\images\sara_dubler_648800_unsplash_A10_Rectangle_2_pattern%402x.png" />
+    <None Include="wwwroot\images\sara_dubler_648800_unsplash_A6_Rectangle_6_pattern.png" />
+    <None Include="wwwroot\images\sara_dubler_648800_unsplash_A6_Rectangle_6_pattern%402x.png" />
+    <None Include="wwwroot\images\serbien_A4_Rectangle_25_pattern.png" />
+    <None Include="wwwroot\images\serbien_A4_Rectangle_25_pattern%402x.png" />
+    <None Include="wwwroot\images\social-media.png" />
+    <None Include="wwwroot\images\spanien_A4_Rectangle_13_pattern.png" />
+    <None Include="wwwroot\images\spanien_A4_Rectangle_13_pattern%402x.png" />
+    <None Include="wwwroot\images\starter_606890_1920_A5_Rectangle_12_pattern.png" />
+    <None Include="wwwroot\images\starter_606890_1920_A5_Rectangle_12_pattern%402x.png" />
+    <None Include="wwwroot\images\usa_flagge_1_A4_Rectangle_21_pattern.png" />
+    <None Include="wwwroot\images\usa_flagge_1_A4_Rectangle_21_pattern%402x.png" />
+  </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties properties_4launchsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
+</Project>

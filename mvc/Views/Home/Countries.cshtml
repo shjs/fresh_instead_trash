@@ -1,0 +1,227 @@
+@using mvc.Models.viewmodel
+@{
+    ViewData["Title"] = "Countries";
+}
+
+<div id="SearchBarBox">
+           <input type="text"id="searchBar"placeholder="Suche ein Rezept.."/>
+           <input type="image" id="SearchImage" alt="Search"
+       src="~/images/lupe.png">
+</div>
+
+<div id="container_onerecipe">
+    <button id="buttonBack">Zurück</button>
+    <div id="image_onerecipe">
+    </div>
+    <h5 id="recipename_onerecipe">
+    </h5>
+
+    <div id="zutaten_onerecipe">
+        <h2 id="header_onerecipe">Zutaten</h2>
+        <table id="zutaten_table">
+            <tbody id="zutaten_tablebody">
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+    <div id="beschreibung_onerecipe">
+        <h2 id="header_onerecipe">Zubereitung</h2>
+        <ul id="instruction_list">
+        </ul>
+
+
+
+    </div>
+</div>
+<div id="divRecipe_countries" >
+        <h1 id="h1_1">Was darf's sein?</h1>
+</div>
+<div id="tableCountries">
+    
+    <ul>
+        <li><div class="CountriesImagesHeader">Österreich</div><img src="~/images/ID2000px_Flag_of_Austria_A4_Rectangle_3_pattern.png"alt="image"class="countryImage" id="0"/></li>
+        <li><div class="CountriesImagesHeader">Deutschland</div><img src="~/images/ID2000px_Flag_of_Germany_A4_Rectangle_9_pattern.png"alt="image"class="countryImage" id="1"/></li>
+        <li><div class="CountriesImagesHeader">Russland</div><img src="~/images/ID1200px_Flag_of_Russia_A4_Rectangle_19_pattern.png"alt="image"class="countryImage" id="2"/></li>
+        <li><div class="CountriesImagesHeader">Mexico</div><img src="~/images/ID2000px_Flag_of_Mexico_A4_Rectangle_11_pattern.png"alt="image"class="countryImage" id="3"/></li>
+        <li><div class="CountriesImagesHeader">Kroatien</div><img src="~/images/ID2000px_Flag_of_Croatia_A4_Rectangle_5_pattern.png"alt="image"class="countryImage" id="4"/></li>
+        <li><div class="CountriesImagesHeader">Japan</div><img src="~/images/ID2000px_Flag_of_Japan_A4_Rectangle_15_pattern.png"alt="image"class="countryImage" id="5"/></li>
+        <li><div class="CountriesImagesHeader">Serbien</div><img src="~/images/serbien_A4_Rectangle_25_pattern.png"alt="image"class="countryImage" id="6"/></li>
+        <li><div class="CountriesImagesHeader">Spanien</div><img src="~/images/spanien_A4_Rectangle_13_pattern.png"alt="image"class="countryImage" id="7"/></li>
+        <li><div class="CountriesImagesHeader">Türkei</div><img src="~/images/ID2000px_Flag_of_Turkey_A4_Rectangle_17_pattern.png"alt="image"class="countryImage" id="8"/></li>
+        <li><div class="CountriesImagesHeader">USA</div><img src="~/images/usa_flagge_1_A4_Rectangle_21_pattern.png"alt="image"class="countryImage" id="9"/></li>
+        <li><div class="CountriesImagesHeader">China</div><img src="~/images/ID2000px_Flag_of_the_People_s__A4_Rectangle_7_pattern.png"alt="image"class="countryImage" id="10"/></li>
+        <li><div class="CountriesImagesHeader">Italien</div><img src="~/images/Italien.png"alt="image"class="countryImage" id="11"/></li>
+
+    </ul>
+
+
+
+</div>
+
+
+
+
+
+@*   
+<div id="container_countries">
+    <div id="divRecipe_countries" >
+        <h1 id="h1_1">Was darf's sein?</h1>
+       
+           
+</div>
+    
+       <table id="tableCountries">
+    <tr>
+        <td><img src="~/images/ID2000px_Flag_of_Austria_A4_Rectangle_3_pattern.png"alt="image"class="countryImage" id="0"/></td>
+        <td><img src="~/images/ID2000px_Flag_of_Germany_A4_Rectangle_9_pattern.png"alt="image"class="countryImage" id="1"/></td>
+        <td><img src="~/images/ID1200px_Flag_of_Russia_A4_Rectangle_19_pattern.png"alt="image"class="countryImage" id="2"/></td>
+        <td><img src="~/images/ID2000px_Flag_of_Mexico_A4_Rectangle_11_pattern.png"alt="image"class="countryImage" id="3"/></td>
+
+    </tr>
+
+<tr>
+        <td><img src="~/images/ID2000px_Flag_of_Croatia_A4_Rectangle_5_pattern.png"alt="image"class="countryImage" id="4"/></td>
+        <td><img src="~/images/ID2000px_Flag_of_Japan_A4_Rectangle_15_pattern.png"alt="image"class="countryImage" id="5"/></td>
+        <td><img src="~/images/serbien_A4_Rectangle_25_pattern.png"alt="image"class="countryImage" id="6"/></td>
+        <td><img src="~/images/spanien_A4_Rectangle_13_pattern.png"alt="image"class="countryImage" id="7"/></td>
+
+    </tr>
+<tr>
+        <td><img src="~/images/ID2000px_Flag_of_Turkey_A4_Rectangle_17_pattern.png"alt="image"class="countryImage" id="8"/></td>
+        <td><img src="~/images/usa_flagge_1_A4_Rectangle_21_pattern.png"alt="image"class="countryImage" id="9"/></td>
+        <td><img src="~/images/ID2000px_Flag_of_the_People_s__A4_Rectangle_7_pattern.png"alt="image"class="countryImage" id="10"/></td>
+        <td id="CountriesSonstigeRezepte"><b>Alle Rezepte</b></td>
+ 
+
+       </table>
+
+</div>*@
+
+<script>
+    $(document).ready(function () {
+        $("#SearchBarBox").hide();
+        $("#divRecipe_countries").hide();
+        $("#container_onerecipe").hide();
+    });
+
+        $(".countryImage").click(function () {
+            var value = $(this).attr("id");
+            $("#SearchBarBox").show();
+            RecipeByCountry(value);
+        });
+
+
+    function RecipeByCountry(value)
+    {
+        $("#tableCountries").empty();
+        $("#divRecipe_countries").show();
+        var url = "/getrecipebyorigin";
+        $.get(url, { origin: value }, function (val) {
+            recipeListSuccess(val);
+            });
+        }
+    function recipeListSuccess(recipes) {
+        $.each(recipes, function (index, recipe) {
+            recipeAddContainer(recipe); 
+            });
+        }
+
+    function recipeAddContainer(recipe) {
+
+         
+           $("#divRecipe_countries").append(
+                recipeBuildContainer(recipe)); 
+                
+        }
+
+    function recipeBuildContainer(recipe) {
+
+
+
+        var s = "<img id='RecipeImage'src='/images/" + recipe.recipename+".jpg'/>"
+            var newContainer = "<div class='RecipeContainerItem'" + "onclick = 'getRecipe(this);'" +
+                "data-id='" + recipe.recipeID + "' >" +s+
+                "<div id='ContainerInformation_recipename'>" + recipe.recipename + "<div/>" +
+                "<div id='ContainerInformation_calories'>" + recipe.calories +" Kalorien"+ "<div/>" +
+                "<div id='ContainerInformation_duration'>" + recipe.duration +" min"+ "<div/>" +
+                "</div>";
+                
+                
+       
+
+           
+        return newContainer;
+        
+    }
+    function getRecipe(item) {
+            $("#divRecipe_countries").hide();
+            $("#SearchBarBox").hide();
+            $("#container_onerecipe").show();
+            var url = "/getonerecipe";
+            var recipeid = $(item).data("id");
+            $.get(url, { id: recipeid }, function (r) {
+
+                $("#image_onerecipe").append("<img id='RecipeImg_onerecipe'src='/images/" + r.recipename+".jpg'/>");
+                $("#recipename_onerecipe").text(r.recipename);
+                var str = r.ingredients;
+                for (var i = 0; i <= str.length; i++) {
+                    str = str.replace(";", ",");
+                }
+                var recipes = str.split(",");
+                for (var i = 0; i <= recipes.length-2; i+=2) {
+                    AddIngredient(recipes[i],recipes[i+1]);
+                }
+
+                var str2 = r.instructions;
+                var items = str2.split(";");
+                for (var i = 0; i <= items.length - 1; i++) {
+                    AddInstruction(items[i]);
+                }
+
+
+            });
+
+
+        }
+    function AddInstruction(instruction) {
+        $("#instruction_list").append("<li>" + instruction + "<li/>");
+    }
+    
+
+
+    function AddIngredient(amount, ingredient) {
+        $("#zutaten_tablebody").append("<tr><td id='amount_onerecipe'>" + amount + "<td/><td id='ingredient_onerecipe'>" + ingredient+"<td/><tr/>");
+    }
+
+    $(".countryImage").click(function () {
+        var value = $(this).attr("id");
+
+
+        $("#SearchBarBox").keydown(function () {
+            var searchTerm = $("#searchBar").val();
+
+            var url = "/getrecipesearchcountries";
+            $.get(url, { searchTerm: searchTerm, value: value }, function (recipes) {
+                $("#divRecipe_countries").empty();
+                recipeListSuccess(recipes);
+            });
+        });
+    });
+
+    $("#SearchImage").click(function () {
+        var searchTerm = $("#searchBar").val();
+        var url = "/getrecipesearchbox";
+        $.get(url, { searchTerm: searchTerm }, function (recipes) {
+            $("#divRecipe_countries").empty();
+            recipeListSuccess(recipes);
+        });
+    });
+
+    $("#buttonBack").click(function () {
+        $("#container_onerecipe").hide();
+        $("#container_allrecipes").show();
+    });
+</script>

@@ -1,0 +1,299 @@
+
+﻿@{
+    ViewData["Title"] = "GetAllRecipes";
+}
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+
+
+
+<div id="container_onerecipe">
+    <button id="buttonBack">Zurück</button>
+    <div id="image_onerecipe">
+    </div>
+    <h5 id="recipename_onerecipe">
+    </h5>
+
+    <div id="zutaten_onerecipe">
+        <h2 id="header_onerecipe">Zutaten</h2>
+        <table id="zutaten_table">
+            <tbody id="zutaten_tablebody">
+
+               
+                </tbody>
+        </table>
+
+
+    </div>
+
+
+    <div id="beschreibung_onerecipe">
+                <h2 id="header_onerecipe">Zubereitung</h2>
+        <ul id="instruction_list">
+
+
+
+        </ul>
+    </div>
+</div>
+<div id="allrecipes_header">
+    <h1 id="h1_allrecipes">Alle Rezepte</h1>
+    <div id="SearchBarBox">
+           <input type="text"id="searchBar"placeholder="Suche ein Rezept.."/>
+           <input type="image" id="SearchImage" alt="Search"
+       src="~/images/lupe.png">
+</div>
+    <div id="filterbox">
+
+    <h4>Ergebnisse filtern nach:</h4>
+    <label class="checkbox">Vegan
+    <input type="checkbox" name="vegan" value="vegan"class="filter" id="vegan"><br />
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="checkbox">Vegetarisch
+    <input type="checkbox" name="vegetarien" value="vegetarian"class="filter" id="vegetarian"><br />
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="checkbox">Regional
+    <input type="checkbox" name="regional" value="regional"class="filter" id="regional"><br />
+    <span class="checkmark"></span>
+    </label>
+
+    <label class="sort">Sortieren nach:
+        <select id="select">
+            <option id="1">Auswählen</option>
+            <option id="2">Kalorien - absteigend</option>
+            <option id="3">Kalorien - aufsteigend</option>
+            <option id="4">Datum - neuste zuerst</option>
+            <option id="5">Datum - älterste zuerst</option>
+        </select>
+    </label>
+
+    <input type="button" name="Submitbutton" value="Filter anwenden!"class="filter" id="Submitbutton"><br />
+    <span class="checkmark"></span>
+
+
+
+</div>
+</div>
+<div id="container_allrecipes">
+
+   
+<div id="divRecipe_allrecipes">
+        
+    
+</div>
+    
+    </div>
+<div id="result">
+
+
+</div>
+<script>
+    $(document).ready(function () {
+            getRecipeList();
+            $("#container_onerecipe").hide();
+           
+        });
+
+    function getRecipeList() {
+            $.ajax({
+                url: '/getallrecipes',
+                type: 'GET',
+                dataType: 'json',
+                success: function (recipes) {
+                    recipeListSuccess(recipes);
+                },
+            });
+        }
+    /*      function recipeListSuccess(recipes) {
+            $.each(recipes, function (index, recipe) {
+                recipeAddRow(recipe);
+            });
+        }
+  $(".RecipeContainerItem").mouseenter(function () {
+        $(".RecipeContainerItem").css("background-color", "blue");
+
+    }, function () {
+            $(".RecipeContainerItem").css("background-color", "#f9f9f9");
+
+        });
+        */
+       /*
+        
+        
+        function recipeAddRow(recipe) {
+            $("#recipesTableBody").append(
+                recipeBuildTableRow(recipe));
+        }
+
+        function recipeBuildTableRow(recipe) {
+            var newRow = "<tr>" +
+                "<td>" + recipe.recipeID + "</td>" +
+                "<td>" + recipe.recipename + "</td>" +
+                "<td>" + recipe.calories + "</td>" +
+                "<td>" + recipe.price + "</td>" +
+                "<td>" + recipe.duration + "</td>" +
+                "<td>" + recipe.vegan + "</td>" +
+                "<td>" + recipe.origin + "</td>" +
+                "<td>" + recipe.ingredients + "</td>" +
+                "<td>" +
+                "<button type='button' " +
+                "onclick='getRecipe(this);'" + "id='btn'" +
+                "class='btn btn-default' " +
+                "data-id='" + recipe.recipeID + "'>" +
+                "Detailansicht" +
+                "</button>" +
+                "</td>" +
+                "</tr>";
+
+            return newRow;}
+            */
+
+    
+
+    function recipeListSuccess(recipes) {
+        $.each(recipes, function (index, recipe) {
+            recipeAddContainer(recipe); 
+            });
+        }
+
+    function recipeAddContainer(recipe) {
+
+         
+           $("#divRecipe_allrecipes").append(
+                recipeBuildContainer(recipe)); 
+                
+        }
+
+    function recipeBuildContainer(recipe) {
+        var s = "<img id='RecipeImage'src='/images/" + recipe.recipename+".jpg'/>"
+        var newContainer = "<div class='RecipeContainerItem'" + "onclick = 'getRecipe(this);'" +
+                "data-id='" + recipe.recipeID + "' >" +s+
+                "<div id='ContainerInformation_recipename' style=''>" + recipe.recipename + "<div/>" +
+                "<div id='ContainerInformation_calories'>" + recipe.calories +" Kalorien"+ "<div/>" +
+                "<div id='ContainerInformation_duration'>" + recipe.duration +" min"+ "<div/>" +
+                "</div>";
+        return newContainer;
+         
+        }
+        function getRecipe(item) {
+            $("#container_allrecipes").hide();
+            $("#allrecipes_header").hide();
+            $("#SearchBarBox").hide();
+            $("#allrecipes_header").hide();
+            $("#container_onerecipe").show();
+            var url = "/getonerecipe";
+            var recipeid = $(item).data("id");
+            $.get(url, { id: recipeid }, function (r) {
+
+                $("#image_onerecipe").append("<img id='RecipeImg_onerecipe'src='/images/" + r.recipename+".jpg'/>");
+                $("#recipename_onerecipe").text(r.recipename);
+                var str = r.ingredients;
+                for (var i = 0; i <= str.length; i++) {
+                    str = str.replace(";", ",");
+                }
+                var recipes = str.split(",");
+                for (var i = 0; i <= recipes.length-2; i+=2) {
+                    AddIngredient(recipes[i],recipes[i+1]);
+                }
+
+                var str2 = r.instructions;
+                var items = str2.split(";");
+                for (var i = 0; i <= items.length - 1; i++) {
+                    AddInstruction(items[i]);
+                }
+
+
+            });
+
+
+        }
+    function AddInstruction(instruction) {
+        $("#instruction_list").append("<li>" + instruction + "<li/>");
+    }
+    
+
+
+    function AddIngredient(amount, ingredient) {
+        $("#zutaten_tablebody").append("<tr><td id='amount_onerecipe'>" + amount + "<td/><td id='ingredient_onerecipe'>" + ingredient+"<td/><tr/>");
+    }
+    
+    /*wird nicht benutzt
+
+    function BuildIngredient(recipes) {
+                 var result = "";
+                 var endresult = "";
+                    for (var i = 0; i <= recipes.length; i++) {
+
+                        var string = recipes[i]
+
+var recipes2 = string.split(",");
+
+                        //bis hier funktionierts
+
+                        for (var j = 0; j <= 1; i++) {
+                            result += '<td>' + recipes2[j] + '<td/>'
+
+                            // $("#zutaten_table").append('<td>' + recipes2[j] + '<td/>'); nicht möglich wegen DOM
+
+                        }
+                        endresult += result;
+
+                    }
+                    return endresult
+                }
+
+    */
+
+    $("#Submitbutton").click(function () {
+        var vegan = $("#vegan").prop("checked");
+        var vegetarian = $("#vegetarian").prop("checked");
+        var regional = $("#regional").prop("checked");
+        var sort = $("#select").val();
+        var searchTerm = $("#searchBar").val();
+
+        var url = "/getrecipebyfilter";
+        $.get(url, { vegan: vegan, vegetarian: vegetarian, regional: regional, sort: sort, searchTerm: searchTerm }, function (recipes) {
+            $("#divRecipe_allrecipes").empty();
+            recipeListSuccess(recipes);
+        });
+    });
+
+    $("#SearchBarBox").keydown(function () {
+        var vegan = $("#vegan").prop("checked");
+        var vegetarian = $("#vegetarian").prop("checked");
+        var regional = $("#regional").prop("checked");
+        var sort = $("#select").val();
+        var searchTerm = $("#searchBar").val();
+
+        var url = "/getrecipebyfilter";
+        $.get(url, { vegan: vegan, vegetarian: vegetarian, regional: regional, sort: sort, searchTerm: searchTerm }, function (recipes) {
+            $("#divRecipe_allrecipes").empty();
+            recipeListSuccess(recipes);
+        });
+    });
+
+
+    $("#SearchImage").click(function () {
+            var vegan = $("#vegan").prop("checked");
+        var vegetarian = $("#vegetarian").prop("checked");
+        var regional = $("#regional").prop("checked");
+        var sort = $("#select").val();
+        var searchTerm = $("#searchBar").val();
+
+        var url = "/getrecipebyfilter";
+        $.get(url, { vegan: vegan, vegetarian: vegetarian, regional: regional, sort: sort, searchTerm: searchTerm }, function (recipes) {
+            $("#divRecipe_allrecipes").empty();
+            recipeListSuccess(recipes);
+        });
+    });
+
+    $("#buttonBack").click(function () {
+        $("#container_onerecipe").hide();
+        $("#container_allrecipes").show();
+        $("#allrecipes_header").show();
+    });
+</script>
