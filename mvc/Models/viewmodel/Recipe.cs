@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 namespace mvc.Models.viewmodel
 {
     public enum Occasion
@@ -24,6 +25,7 @@ namespace mvc.Models.viewmodel
         public string Instructions { get; set; }
         public string Ingredients { get; set; }
         public DateTime DateAdded { get; set; }
+        public IFormFile ImageFile { get; set; }
 
         public Recipe() : this(0, "", 0, false, false, 0.0m, 0, null, true,null, "", "", DateTime.Now) { }
         public Recipe(int recipeID, string recipename, int calories, bool vegan, bool vegetarian, decimal price,
@@ -41,7 +43,7 @@ namespace mvc.Models.viewmodel
             this.Origin = origin;
             this.Instructions = instructions;
             this.Ingredients = ingredients;
-            this.DateAdded = dateAdded;
+            this.DateAdded = DateTime.Now;
         }
     }
 }

@@ -1,0 +1,117 @@
+﻿@model mvc.Models.viewmodel.Recipe;
+@{
+    ViewData["Title"] = "Registration Recipe";
+}
+<div class="container">
+    <section style="margin-top: 100px;">
+        <h1>Registration of a new recipe</h1>
+        <div>
+            <div class="col-mb-8">
+                <form asp-controller="admin" asp-action="registerRecipe" method="post" class="was-validated" enctype="multipart/form-data">
+                    <div class="mb-8">
+                        <label asp-for="Recipename" class="form-label">Full Name:</label>
+                        <input type="text" asp-for="Recipename" class="form-control" />
+                        <span asp-validation-for="Recipename"></span>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Bitte ausfüllen!</div>
+                    </div>
+                    <div class="mb-8">
+                        <label asp-for="Calories" class="form-label">Calories:</label>
+                        <input type="number" asp-for="Calories" class="form-control" />
+                        <span asp-validation-for="Calories"></span>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Bitte ausfüllen!</div>
+                    </div>
+                    <div class="mb-8 row">
+                        <div class="col">
+                            <label asp-for="Vegan" class="form-check-label">Vegan:</label>
+                            <input type="checkbox" asp-for="Vegan" class="form-check-input" />
+                            <span asp-validation-for="Vegan"></span>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Bitte ausfüllen!</div>
+                        </div>
+                        <div class="col">
+                            <label asp-for="Vegetarian" class="form-check-label">Vegetarian:</label>
+                            <input type="checkbox" asp-for="Vegetarian" class="form-check-input" />
+                            <span asp-validation-for="Vegetarian"></span>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Bitte ausfüllen!</div>
+                        </div>
+                    </div>
+                    <div class="mb-8">
+                        <label asp-for="Price" class="form-label">Price:</label>
+                        <input type="number" asp-for="Price" class="form-control" />
+                        <span asp-validation-for="Price"></span>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Falsches Format</div>
+                    </div>
+                    <div class="mb-8">
+                        <label asp-for="Duration" class="form-label">Duration</label>
+                        <input type="number" asp-for="Duration" class="form-control" />
+                        <span asp-validation-for="Duration"></span>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Falsches Format</div>
+                    </div>
+                    <div class="mb-8">
+                        <label asp-for="Regional" class="form-check-label">Regional:</label>
+                        <input type="checkbox" asp-for="Regional" class="form-check-input" />
+                        <span asp-validation-for="Regional"></span>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Bitte ausfüllen!</div>
+                    </div>
+                    <div class="mb-8">
+                        <label asp-for="Origin">Origin</label> <br />
+                        <select asp-for="Origin">
+                            <option>Austria</option>
+                            <option>Germany</option>
+                            <option>Russia</option>
+                            <option>Mexico</option>
+                            <option>Croatia</option>
+                            <option>Japan</option>
+                            <option>Serbia</option>
+                            <option>Spain</option>
+                            <option>Turkey</option>
+                            <option>USA</option>
+                            <option>China</option>
+                        </select>
+                    </div>
+                    <div class="mb-8">
+                        <label asp-for="Occasion">Occasion</label> <br />
+                        <select asp-for="Occasion">
+                            <option>Breakfast</option>
+                            <option>Dinner</option>
+                            <option>Lunch</option>
+                            <option>Picknick</option>
+                            <option>Snack</option>
+                            <option>notSpecified</option>
+                        </select>
+                    </div>
+                    <div class="mb-8">
+                        <label asp-for="Instructions" class="form-label">Instructions:</label>
+                        <textarea type="text" asp-for="Instructions" class="form-control"></textarea>
+                        <span asp-validation-for="Instructions"></span>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Falsches Format</div>
+                    </div>
+                    <div class="mb-8">
+                        <label asp-for="Ingredients" class="form-label">Ingredients:</label>
+                        <textarea type="text" asp-for="Ingredients" class="form-control"></textarea>
+                        <span asp-validation-for="Ingredients"></span>
+                        <div class="valid-feedback">Valid.</div>
+                        <div class="invalid-feedback">Falsches Format</div>
+                    </div>
+                    <div class="mb-8">
+                        <label asp-for="ImageFile" class="form-label">UploadBild</label>
+                        <input type="file" asp-for="ImageFile" class="form-control" />
+                        <span asp-validation-for="ImageFile"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+</div>
+
+

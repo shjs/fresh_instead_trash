@@ -28,6 +28,16 @@ namespace mvc.Controllers
         {
             _logger = logger;
         }
+
+        [HttpPost]
+        public IActionResult AllRecipes(FilterModel filterModel)
+        {
+            List<Recipe> rep = GetRecipeByFilter(Convert.ToString(filterModel.Vegan), Convert.ToString(filterModel.Vegetarian), Convert.ToString(filterModel.Regional), Convert.ToString(filterModel.Filter), "");
+            filterModel.Recipes = rep;
+            return View(filterModel);
+ 
+        }
+
         public IActionResult GetAllRecipes()
         {
             try
@@ -50,9 +60,18 @@ namespace mvc.Controllers
                 recipeRepository.Close();
             }
         }
+
+        [HttpGet]
         public IActionResult AllRecipes()
         {
-            return View();
+            FilterModel fm = new FilterModel();
+            List<Recipe> rep = new List<Recipe>();
+            rep.Add(new Recipe());
+            rep.Add(new Recipe());
+            rep.Add(new Recipe());
+            rep.Add(new Recipe());
+            fm.Recipes = rep;
+            return View(fm);
         }
         [HttpGet]
         public IActionResult GetOneRecipe(int id)
@@ -101,8 +120,7 @@ namespace mvc.Controllers
             }
         }
 
-        [HttpGet]
-        public IActionResult GetRecipeByFilter(string vegan, string vegetarian, string regional, string sort, string searchTerm)
+        public List<Recipe> GetRecipeByFilter(string vegan, string vegetarian, string regional, string sort, string searchTerm)
         {
             try
             {
@@ -113,7 +131,7 @@ namespace mvc.Controllers
                     string query = QueryAssembly(vegan, vegetarian, regional);
                     query = QuerySort(sort, query);
                     List<Recipe> r = recipeRepository.GetAllRecipesSixAttribute(query);
-                    return Json(r);
+                    return r;
                 }
                 else
                 {
@@ -125,30 +143,31 @@ namespace mvc.Controllers
                         query += " WHERE recipename like " + searchTerm;
                         query = QuerySort(sort, query);
                         List<Recipe> r = recipeRepository.GetAllRecipesSixAttribute(query);
-                        return Json(r);
+                        return r;
                     }
                     else
                     {
                         query += " AND recipename like " + searchTerm;
                         query = QuerySort(sort, query);
                         List<Recipe> r = recipeRepository.GetAllRecipesSixAttribute(query);
-                        return Json(r);
+                        return r;
                     }         
                 }
             }
             catch (MySqlException)
             {
-                return View("Message", new Message("Datenbankfehler", "Fehler mit der Datenbank"));
+                return new List<Recipe>();
             }
             catch (Exception)
             {
-                return View("Message", new Message("Fehler", "Fehler"));
+                return new List<Recipe>();
             }
             finally
             {
                 recipeRepository.Close();
             }
         }
+
         [HttpGet]
         public IActionResult GetRecipeSearchBox(string searchTerm)
         {

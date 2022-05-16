@@ -11,7 +11,6 @@
   <ItemGroup>
     <Folder Include="Models\db\" />
     <Folder Include="Models\db\sql\" />
-    <Folder Include="Models\viewmodel\" />
     <Folder Include="Content\" />
     <Folder Include="wwwroot\css\" />
     <Folder Include="wwwroot\images\" />

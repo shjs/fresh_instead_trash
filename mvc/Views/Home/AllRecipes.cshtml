@@ -1,13 +1,10 @@
-
+@model mvc.Models.viewmodel.FilterModel;
 ﻿@{
     ViewData["Title"] = "GetAllRecipes";
 }
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
-
-
-
-<div id="container_onerecipe">
+<!--<div id="container_onerecipe">
     <button id="buttonBack">Zurück</button>
     <div id="image_onerecipe">
     </div>
@@ -18,154 +15,177 @@
         <h2 id="header_onerecipe">Zutaten</h2>
         <table id="zutaten_table">
             <tbody id="zutaten_tablebody">
-
-               
-                </tbody>
+            </tbody>
         </table>
-
-
     </div>
 
 
     <div id="beschreibung_onerecipe">
-                <h2 id="header_onerecipe">Zubereitung</h2>
+        <h2 id="header_onerecipe">Zubereitung</h2>
         <ul id="instruction_list">
-
-
-
         </ul>
     </div>
-</div>
+</div>-->
 <div id="allrecipes_header">
     <h1 id="h1_allrecipes">Alle Rezepte</h1>
     <div id="SearchBarBox">
-           <input type="text"id="searchBar"placeholder="Suche ein Rezept.."/>
-           <input type="image" id="SearchImage" alt="Search"
-       src="~/images/lupe.png">
-</div>
+        <input type="text" id="searchBar" placeholder="Suche ein Rezept.." />
+        <input type="image" id="SearchImage" alt="Search"
+               src="~/images/lupe.png">
+    </div>
     <div id="filterbox">
-
-    <h4>Ergebnisse filtern nach:</h4>
-    <label class="checkbox">Vegan
-    <input type="checkbox" name="vegan" value="vegan"class="filter" id="vegan"><br />
-    <span class="checkmark"></span>
-    </label>
-
-    <label class="checkbox">Vegetarisch
-    <input type="checkbox" name="vegetarien" value="vegetarian"class="filter" id="vegetarian"><br />
-    <span class="checkmark"></span>
-    </label>
-
-    <label class="checkbox">Regional
-    <input type="checkbox" name="regional" value="regional"class="filter" id="regional"><br />
-    <span class="checkmark"></span>
-    </label>
-
-    <label class="sort">Sortieren nach:
-        <select id="select">
-            <option id="1">Auswählen</option>
-            <option id="2">Kalorien - absteigend</option>
-            <option id="3">Kalorien - aufsteigend</option>
-            <option id="4">Datum - neuste zuerst</option>
-            <option id="5">Datum - älterste zuerst</option>
-        </select>
-    </label>
-
-    <input type="button" name="Submitbutton" value="Filter anwenden!"class="filter" id="Submitbutton"><br />
-    <span class="checkmark"></span>
-
-
-
-</div>
+        <h4>Ergebnisse filtern nach:</h4>
+        <form asp-controller="home" asp-action="allrecipes" method="post">
+            <p>
+                <label asp-for="Vegan">Vegan</label>
+                <input type="checkbox" asp-for="Vegan" class="form-check-input" />
+                <span asp-validation-for="Vegan"></span>
+                <label asp-for="Vegetarian">Vegetarian</label>
+                <input type="checkbox" asp-for="Vegetarian" class="form-check-input" />
+                <span asp-validation-for="Vegetarian"></span>
+                <label asp-for="Regional">Regional</label>
+                <input type="checkbox" asp-for="Regional" class="form-check-input" />
+                <span asp-validation-for="Regional"></span>
+                <label asp-for="Filter">Filter</label> <br />
+                <select asp-for="Filter">
+                    <option value="Choose">Auswählen</option>
+                    <option value="CaloAb">Kalorien - absteigend</option>
+                    <option value="CaloAuf">Kalorien - aufsteigend</option>
+                    <option value="DNeu">Datum - neuste zuerst</option>
+                    <option value="DAlt">Datum - älterste zuerst</option>
+                </select>
+                <span asp-validation-for="Filter"></span>
+            </p>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <!--TODO: Alle Rezepte anzeigen; eigenes Model machN: Anfrage, die true liefert bei dem was ich brauche-->
+    </div>
 </div>
 <div id="container_allrecipes">
 
-   
-<div id="divRecipe_allrecipes">
-        
-    
-</div>
-    
+    <div id="divRecipe_allrecipes">
+        <main style="margin-top: 40px; width: 90%; margin-left: 5%; margin-bottom: 100px; ">
+            <h1 style="text-align: center; background-color: lightslategrey"><strong>Recipe</strong></h1>
+            <div class="row">
+                @{ String[] rep = { "1.Rezept", "2.Rezept", "3.Rezept", "4.Rezept", "5.Rezept" }; }
+                @{foreach (mvc.Models.viewmodel.Recipe re in Model.Recipes)
+                    {
+                        <div class="col-lg-3">
+                            <div class="offcanvas offcanvas-end" id="demo">
+                                <div class="offcanvas-header">
+                                    <h1 class="offcanvas-title">@re.Recipename</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                                </div>
+                                <div class="offcanvas-body">
+                                    <p>Hier kann ein Text hin</p>
+                                </div>
+                            </div>
+
+                            <div class="container-fluid mt-4">
+                                <div class="card" style="width:300px;">
+                                    <img class="card-img-top" src="https://cdn.pixabay.com/photo/2022/05/07/20/22/flowers-7180947_960_720.jpg" alt="Card image" style="width:100%; text-align:center">
+                                    <div class="card-body">
+                                        <h4 class="card-title">re.Recipename</h4>
+                                        <p class="card-text">re.Recipename</p>
+                                        <p>re.Recipename</p>
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                                            Mehr Lesen
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>
+        </main>
+
     </div>
-<div id="result">
-
 
 </div>
+<div id="result">
+    Ich bin regelrecht ein TEst, der zeigen soll dass das nicht funktioniert
+
+</div>
+
+
+
 <script>
-    $(document).ready(function () {
-            getRecipeList();
-            $("#container_onerecipe").hide();
-           
-        });
+    /*
+        $(document).ready(function () {
+                getRecipeList();
+                $("#container_onerecipe").hide();
 
-    function getRecipeList() {
-            $.ajax({
-                url: '/getallrecipes',
-                type: 'GET',
-                dataType: 'json',
-                success: function (recipes) {
-                    recipeListSuccess(recipes);
-                },
             });
-        }
-    /*      function recipeListSuccess(recipes) {
-            $.each(recipes, function (index, recipe) {
-                recipeAddRow(recipe);
+
+        function getRecipeList() {
+                $.ajax({
+                    url: '/getallrecipes',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (recipes) {
+                        recipeListSuccess(recipes);
+                    },
+                });
+            }
+        /*      function recipeListSuccess(recipes) {
+                $.each(recipes, function (index, recipe) {
+                    recipeAddRow(recipe);
+                });
+            }
+      $(".RecipeContainerItem").mouseenter(function () {
+            $(".RecipeContainerItem").css("background-color", "blue");
+
+        }, function () {
+                $(".RecipeContainerItem").css("background-color", "#f9f9f9");
+
             });
-        }
-  $(".RecipeContainerItem").mouseenter(function () {
-        $(".RecipeContainerItem").css("background-color", "blue");
-
-    }, function () {
-            $(".RecipeContainerItem").css("background-color", "#f9f9f9");
-
-        });
-        */
-       /*
-        
-        
-        function recipeAddRow(recipe) {
-            $("#recipesTableBody").append(
-                recipeBuildTableRow(recipe));
-        }
-
-        function recipeBuildTableRow(recipe) {
-            var newRow = "<tr>" +
-                "<td>" + recipe.recipeID + "</td>" +
-                "<td>" + recipe.recipename + "</td>" +
-                "<td>" + recipe.calories + "</td>" +
-                "<td>" + recipe.price + "</td>" +
-                "<td>" + recipe.duration + "</td>" +
-                "<td>" + recipe.vegan + "</td>" +
-                "<td>" + recipe.origin + "</td>" +
-                "<td>" + recipe.ingredients + "</td>" +
-                "<td>" +
-                "<button type='button' " +
-                "onclick='getRecipe(this);'" + "id='btn'" +
-                "class='btn btn-default' " +
-                "data-id='" + recipe.recipeID + "'>" +
-                "Detailansicht" +
-                "</button>" +
-                "</td>" +
-                "</tr>";
-
-            return newRow;}
             */
+    /*
 
-    
 
+     function recipeAddRow(recipe) {
+         $("#recipesTableBody").append(
+             recipeBuildTableRow(recipe));
+     }
+
+     function recipeBuildTableRow(recipe) {
+         var newRow = "<tr>" +
+             "<td>" + recipe.recipeID + "</td>" +
+             "<td>" + recipe.recipename + "</td>" +
+             "<td>" + recipe.calories + "</td>" +
+             "<td>" + recipe.price + "</td>" +
+             "<td>" + recipe.duration + "</td>" +
+             "<td>" + recipe.vegan + "</td>" +
+             "<td>" + recipe.origin + "</td>" +
+             "<td>" + recipe.ingredients + "</td>" +
+             "<td>" +
+             "<button type='button' " +
+             "onclick='getRecipe(this);'" + "id='btn'" +
+             "class='btn btn-default' " +
+             "data-id='" + recipe.recipeID + "'>" +
+             "Detailansicht" +
+             "</button>" +
+             "</td>" +
+             "</tr>";
+
+         return newRow;}
+         */
+
+
+    /*
     function recipeListSuccess(recipes) {
         $.each(recipes, function (index, recipe) {
-            recipeAddContainer(recipe); 
+            recipeAddContainer(recipe);
             });
         }
 
     function recipeAddContainer(recipe) {
 
-         
+
            $("#divRecipe_allrecipes").append(
-                recipeBuildContainer(recipe)); 
-                
+                recipeBuildContainer(recipe));
+
         }
 
     function recipeBuildContainer(recipe) {
@@ -177,7 +197,7 @@
                 "<div id='ContainerInformation_duration'>" + recipe.duration +" min"+ "<div/>" +
                 "</div>";
         return newContainer;
-         
+
         }
         function getRecipe(item) {
             $("#container_allrecipes").hide();
@@ -214,13 +234,13 @@
     function AddInstruction(instruction) {
         $("#instruction_list").append("<li>" + instruction + "<li/>");
     }
-    
+
 
 
     function AddIngredient(amount, ingredient) {
         $("#zutaten_tablebody").append("<tr><td id='amount_onerecipe'>" + amount + "<td/><td id='ingredient_onerecipe'>" + ingredient+"<td/><tr/>");
     }
-    
+
     /*wird nicht benutzt
 
     function BuildIngredient(recipes) {
@@ -247,7 +267,7 @@ var recipes2 = string.split(",");
                 }
 
     */
-
+    /*
     $("#Submitbutton").click(function () {
         var vegan = $("#vegan").prop("checked");
         var vegetarian = $("#vegetarian").prop("checked");
@@ -297,3 +317,4 @@ var recipes2 = string.split(",");
         $("#allrecipes_header").show();
     });
 </script>
+

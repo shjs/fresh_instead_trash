@@ -8,8 +8,7 @@ namespace mvc.Models.db
 {
     public class RecipeRepositoryDB : IRecipeRepository
     {
-
-        private string _connectionString = "Server=localhost;Database=dipl_database;UID=root;PWD=1234";
+        private string _connectionString = "Server=localhost;Database=dipl_database;UID=root;PWD=root";
         private MySqlConnection _connection;
 
         public void Open()
@@ -148,13 +147,13 @@ namespace mvc.Models.db
             try
             {
                 MySqlCommand cmdInsert = this._connection.CreateCommand();
-                cmdInsert.CommandText = "INSERT INTO recipes VALUES(null,@recipename,@calories, @vegan, @vegetarian, @price, @duration, @occasion ,@regional, @origin, @instruction, @ingredients, @dateadded)";
+                cmdInsert.CommandText = "INSERT INTO recipes VALUES(null,@recipename,@calories, @vegan, @vegetarian, @duration, @occasion ,@regional, @origin, @instruction, @ingredients, @dateadded)";
 
                 cmdInsert.Parameters.AddWithValue("recipename", recipeToInsert.Recipename);
                 cmdInsert.Parameters.AddWithValue("calories", recipeToInsert.Calories);
                 cmdInsert.Parameters.AddWithValue("vegan", recipeToInsert.Vegan);
                 cmdInsert.Parameters.AddWithValue("vegetarian", recipeToInsert.Vegetarian);
-                cmdInsert.Parameters.AddWithValue("price", recipeToInsert.Price);
+                //cmdInsert.Parameters.AddWithValue("price", recipeToInsert.Price);
                 cmdInsert.Parameters.AddWithValue("duration", recipeToInsert.Duration);
                 cmdInsert.Parameters.AddWithValue("occasion", recipeToInsert.Occasion);
                 cmdInsert.Parameters.AddWithValue("regional", recipeToInsert.Regional);
@@ -181,7 +180,7 @@ namespace mvc.Models.db
                 {
                     while (reader.Read())
                     {
-                        allRecipes.Add(new Recipe
+                        allRecipes.Add(new Recipe()
                         {
                             RecipeID = Convert.ToInt32(reader["id"]),
                             Recipename = Convert.ToString(reader["recipename"]),
