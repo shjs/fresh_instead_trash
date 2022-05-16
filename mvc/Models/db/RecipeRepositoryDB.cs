@@ -75,7 +75,7 @@ namespace mvc.Models.db
                             Calories = Convert.ToInt32(reader["calories"]),
                             Vegan = Convert.ToBoolean(reader["vegan"]),
                             Vegetarian = Convert.ToBoolean(reader["vegetarian"]),
-                            Price = reader.GetDecimal("price"),
+                            //Price = reader.GetDecimal("price"),
                             Duration = Convert.ToInt32(reader["duration"]),
                             Occasion = reader["occasion"] != DBNull.Value ? (Occasion)Convert.ToInt32(reader["occasion"]) : (Occasion?)null,
                             Regional = Convert.ToBoolean(reader["regional"]),
@@ -120,7 +120,7 @@ namespace mvc.Models.db
                         Calories = Convert.ToInt32(reader["calories"]),
                         Vegan = Convert.ToBoolean(reader["vegan"]),
                         Vegetarian = Convert.ToBoolean(reader["vegetarian"]),
-                        Price = Convert.ToDecimal(reader["price"]),
+                        //Price = Convert.ToDecimal(reader["price"]),
                         Duration = Convert.ToInt32(reader["duration"]),
                         Occasion = reader["occasion"] != DBNull.Value ? (Occasion)Convert.ToInt32(reader["occasion"]) : (Occasion?)null,
                         Regional = Convert.ToBoolean(reader["regional"]),
@@ -168,6 +168,68 @@ namespace mvc.Models.db
                 throw;
             }
         }
+
+        public List<Recipe> GetRecipeWithFilter(bool vegan, bool vegetarian, bool regional)
+        {
+            try
+            {
+                List<Recipe> allrep = new List<Recipe>();
+                MySqlCommand cmdAllRecipes = this._connection.CreateCommand();
+                if(vegan == true)
+                {
+                    cmdAllRecipes.CommandText = "SELECT * FROM recipes where vegan = true;";
+                }else if(vegetarian == true){
+                    cmdAllRecipes.CommandText = "SELECT * FROM recipes where vegetarian = true;";
+                }else if(regional == true){
+                    cmdAllRecipes.CommandText = "SELECT * FROM recipes where regional = true;";
+                }else if(vegan == true && vegetarian == true){
+                    cmdAllRecipes.CommandText = "SELECT * FROM recipes where vegan = true AND vegetarian = true;";
+                }else if(vegan == true && regional == true){
+                    cmdAllRecipes.CommandText = "SELECT * FROM recipes where vegan = true AND regional = true;";
+                }else if(vegetarian == true && regional == true){
+                    cmdAllRecipes.CommandText = "SELECT * FROM recipes where vegetarian = true AND regional = true;";
+                }else if(vegetarian == true && vegan == true && regional == true){
+                    cmdAllRecipes.CommandText = "SELECT * FROM recipes where vegan = true AND vegetarian = true AND regional = true;";
+                }
+                using (MySqlDataReader reader = cmdAllRecipes.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        allrep.Add(new Recipe()
+                        {
+                            RecipeID = Convert.ToInt32(reader["id"]),
+                            Recipename = Convert.ToString(reader["recipename"]),
+                            Calories = Convert.ToInt32(reader["calories"]),
+                            Vegan = Convert.ToBoolean(reader["vegan"]),
+                            Vegetarian = Convert.ToBoolean(reader["vegetarian"]),
+                            //Price = reader.GetDecimal("price"),
+                            Duration = Convert.ToInt32(reader["duration"]),
+                            Occasion = reader["occasion"] != DBNull.Value ? (Occasion)Convert.ToInt32(reader["occasion"]) : (Occasion?)null,
+                            Regional = Convert.ToBoolean(reader["regional"]),
+                            Origin = reader["origin"] != DBNull.Value ? (Origin)Convert.ToInt32(reader["origin"]) : (Origin?)null,
+                            Instructions = Convert.ToString(reader["instruction"]),
+                            Ingredients = Convert.ToString(reader["ingredients"]),
+                            DateAdded = Convert.ToDateTime(reader["dateadded"]),
+                        });
+                    }
+                }
+                if (allrep.Count > 0)
+                {
+                    return allrep;
+                }
+                else
+                {
+                    return null;
+                }
+
+            }
+            catch (Exception)
+            {
+                throw;
+                throw new Exception();
+            }
+        }
+      
         public List<Recipe> GetAllRecipesSixAttribute(string query)
         {
             try

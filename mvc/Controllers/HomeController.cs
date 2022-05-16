@@ -29,13 +29,47 @@ namespace mvc.Controllers
             _logger = logger;
         }
 
+        [HttpGet]
+        public IActionResult AllRecipes()
+        {
+            try
+            {
+                recipeRepository = new RecipeRepositoryDB();
+                recipeRepository.Open();
+                List<Recipe> rep = recipeRepository.GetAllRecipes();
+                FilterModel m = new FilterModel();
+                m.Recipes = rep;
+                return View(m);
+            }
+            catch (MySqlException)
+            {
+                return View("Message", new Message("Datenbankfehler", "Fehler mit der Datenbank"));
+            }
+            finally
+            {
+                recipeRepository.Close();
+            }
+        }
+
         [HttpPost]
         public IActionResult AllRecipes(FilterModel filterModel)
         {
-            List<Recipe> rep = GetRecipeByFilter(Convert.ToString(filterModel.Vegan), Convert.ToString(filterModel.Vegetarian), Convert.ToString(filterModel.Regional), Convert.ToString(filterModel.Filter), "");
-            filterModel.Recipes = rep;
-            return View(filterModel);
- 
+            try
+            {
+                recipeRepository = new RecipeRepositoryDB();
+                recipeRepository.Open();
+                List<Recipe> rep = recipeRepository.GetRecipeWithFilter(filterModel.Vegan, filterModel.Vegetarian, filterModel.Regional);
+                filterModel.Recipes = rep;
+                return View(filterModel);
+            }
+            catch (MySqlException)
+            {
+                return View("Message", new Message("Datenbankfehler", "Fehler mit der Datenbank"));
+            }
+            finally
+            {
+                recipeRepository.Close();
+            }
         }
 
         public IActionResult GetAllRecipes()
@@ -61,18 +95,6 @@ namespace mvc.Controllers
             }
         }
 
-        [HttpGet]
-        public IActionResult AllRecipes()
-        {
-            FilterModel fm = new FilterModel();
-            List<Recipe> rep = new List<Recipe>();
-            rep.Add(new Recipe());
-            rep.Add(new Recipe());
-            rep.Add(new Recipe());
-            rep.Add(new Recipe());
-            fm.Recipes = rep;
-            return View(fm);
-        }
         [HttpGet]
         public IActionResult GetOneRecipe(int id)
         {

@@ -12,6 +12,7 @@ namespace mvc.Models.db
         List<Recipe> GetAllRecipes();
         bool InsertRecipe(Recipe recipeToInsert);
         bool DeleteRecipe(int recipeToDelete);
+        List<Recipe> GetRecipeWithFilter(bool vegan, bool vegetarian, bool regional);
         bool ChangeRecipe(int recipeToChange, Recipe newRecipeData);
         List<Recipe> GetRecipeWithOrigin(int origin);
         List<Recipe> GetAllRecipesSixAttribute(string query);
