@@ -96,6 +96,30 @@ namespace mvc.Controllers
         }
 
         [HttpGet]
+        public IActionResult CountriesDisplay(int id)
+        {
+            try
+            {
+                recipeRepository = new RecipeRepositoryDB();
+                recipeRepository.Open();
+                List<Recipe> rep = recipeRepository.GetRecipeWithOrigin(id);
+                return View(rep);
+            }
+            catch (MySqlException)
+            {
+                return View("Message", new Message("Datenbankfehler", "Fehler mit der Datenbank"));
+            }
+            catch (Exception)
+            {
+                return View("Message", new Message("Fehler", "Fehler"));
+            }
+            finally
+            {
+                recipeRepository.Close();
+            }
+        }
+
+        [HttpGet]
         public IActionResult GetOneRecipe(int id)
         {
             try

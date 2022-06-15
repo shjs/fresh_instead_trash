@@ -297,7 +297,7 @@ namespace mvc.Models.db
                             Calories = Convert.ToInt32(reader["calories"]),
                             Vegan = Convert.ToBoolean(reader["vegan"]),
                             Vegetarian = Convert.ToBoolean(reader["vegetarian"]),
-                            Price = reader.GetDecimal("price"),
+                            //Price = reader.GetDecimal("price"),
                             Duration = Convert.ToInt32(reader["duration"]),
                             Occasion = reader["occasion"] != DBNull.Value ? (Occasion)Convert.ToInt32(reader["occasion"]) : (Occasion?)null,
                             Regional = Convert.ToBoolean(reader["regional"]),
