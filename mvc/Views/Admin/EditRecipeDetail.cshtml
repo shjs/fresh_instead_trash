@@ -1,0 +1,50 @@
+﻿@model mvc.Models.viewmodel.Recipe;
+@{
+    ViewData["Title"] = "Edit Recipe";
+}
+
+<main style="margin-top: 150px;">
+    <div class="col-mb-8" style="margin-left: 50px;">
+        <form asp-controller="admin" asp-action="update" method="post">
+            <div class="mb-8">
+                <label asp-for="RecipeID" class="form-label">ID:</label>
+                <input type="text" asp-for="RecipeID" class="form-control" value="@Model.RecipeID" readonly />
+                <span asp-validation-for="RecipeID"></span>
+            </div>
+            <div class="mb-8">
+                <label asp-for="Recipename" class="form-label">Full Name:</label>
+                <input type="text" asp-for="Recipename" class="form-control" value="@Model.Recipename" />
+                <span asp-validation-for="Recipename"></span>
+            </div>
+            <div class="mb-8">
+                <label asp-for="Calories" class="form-label">Calories:</label>
+                <input type="number" asp-for="Calories" class="form-control" value="@Model.Calories" />
+                <span asp-validation-for="Calories"></span>
+            </div>
+            <div class="mb-8">
+                <label asp-for="Duration" class="form-label">Duration</label>
+                <input type="number" asp-for="Duration" class="form-control" value="@Model.Duration" />
+                <span asp-validation-for="Duration"></span>
+            </div>
+            <div class="mb-8">
+                <label asp-for="Instructions" class="form-label">Instructions:</label>
+                <textarea type="text" asp-for="Instructions" class="form-control" placeholder="@Model.Instructions"></textarea>
+                <span asp-validation-for="Instructions"></span>
+            </div>
+            <div class="mb-8">
+                <label asp-for="Ingredients" class="form-label">Ingredients:</label>
+                <textarea type="text" asp-for="Ingredients" class="form-control" placeholder="@Model.Ingredients"></textarea>
+                <span asp-validation-for="Ingredients"></span>
+            </div>
+            <div class="mb-8">
+                <label asp-for="FilePath" class="form-label">Ingredients:</label>
+                <textarea type="text" asp-for="FilePath" class="form-control" placeholder="@Model.FilePath"></textarea>
+                <span asp-validation-for="FilePath"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+</main>
+
+

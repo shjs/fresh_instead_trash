@@ -32,7 +32,28 @@ namespace mvc.Models.db
         }
         public bool ChangeRecipe(int recipeToChange, Recipe newRecipeData)
         {
-            throw new NotImplementedException();
+            if (newRecipeData == null)
+            {
+                return false;
+            }
+            try
+            {
+                MySqlCommand cmdInsert = this._connection.CreateCommand();
+                cmdInsert.CommandText = "UPDATE recipes SET recipename = @recipename, calories = @calories, duration = @duration, instruction = @instruction, ingredients = @ingredients , dateadded = @dateadded, filepath = @filepath WHERE id = @id;";
+                cmdInsert.Parameters.AddWithValue("recipename", newRecipeData.Recipename);
+                cmdInsert.Parameters.AddWithValue("calories", newRecipeData.Calories);
+                cmdInsert.Parameters.AddWithValue("duration", newRecipeData.Duration);
+                cmdInsert.Parameters.AddWithValue("instruction", newRecipeData.Instructions);
+                cmdInsert.Parameters.AddWithValue("ingredients", newRecipeData.Ingredients);
+                cmdInsert.Parameters.AddWithValue("dateadded", newRecipeData.DateAdded);
+                cmdInsert.Parameters.AddWithValue("filepath", newRecipeData.FilePath);
+                cmdInsert.Parameters.AddWithValue("id", newRecipeData.RecipeID);
+                return cmdInsert.ExecuteNonQuery() == 1;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         public bool DeleteRecipe(int recipeToDelete)

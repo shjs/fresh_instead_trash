@@ -35,7 +35,7 @@ isAdmin boolean default false,
  constraint userId_PK primary key(userId)
  )engine=InnoDB;
  
-insert into users values(null, "Admin", "User", 18, null, date("2000-12-09"), "albert.greinoecker@htlinn.ac.at", sha1("rUdebOys!2020"),"albert", true);
+insert into users values(null, "Patrick", "Jenewein", 18, null, date("2000-12-09"), "test@gmail.com", sha1("patrick"),"albert", true);
 
 
 insert into recipes values(null, "Zucchiniaufstrich", 281,  false, true, 20, null, false, null, "Die Zubereitung dauert insgesamt 20 Minuten 
@@ -59,7 +59,7 @@ kannst du dir einen leckeren Joghurtdip dazu anrühren;
 ","400g, Zucchini; 50g, Tasse Paniermehl; 40g, Tasse Parmesan;1 Löffel, Knoblauchpulver;1 Löffel, getrocknetes Basilikum;1 Teelöffel, Salz;1 Teelöffel, Pfeffer; 
 1, Eier;250g, fettarmes Joghurt;1 Löffel, Zitronensaft;2 Bund, frischen Schnittlauch;Ein bisschen, Salz; Ein bisschen, Pfeffer;", date("2020-06-01"), "");
 
-/*
+
 insert into recipes values(null, "Veganer Kaiserschmarrn", 360,  true, true, 20, null, true, 0, "Zuerst verrührst du die Sojamilch und das Sojamehl 
 gut in einer Schüssel und gibst danach den braunen Zucker, Mehl, das Backpulver und die Rosinen hinzu;Gib in eine beschichtete Pfanne etwas 
 Rapsöl hinein und lasse sie heiß werden.;Sobald du mit dem Eingießen des Teigs beginnst, reduziere die Hitze leicht, damit die Unterseite des
@@ -69,7 +69,7 @@ Rapsöl hinein und lasse sie heiß werden.;Sobald du mit dem Eingießen des Teig
  noch einmal etwas Öl hinzu.;Jetzt noch kurz fertigbacken und danach ist dein veganer Kaiserschmarren servierbereit.", "250ml, Sojadrink 
  (mit Calciumzusatz);
 4 Esslöffel,Mehl (2 EL, Weizenmehl und 2 EL, Weizenvollkornmehl);1Esslöffel, Sojamehl;1Teelöffel, Backpulver;1 Esslöffel, Zucker;
-Eine kleine Packung, Rosinen;Ein Schuss, Rapsöl;", date("2020-06-01"));
+Eine kleine Packung, Rosinen;Ein Schuss, Rapsöl;", date("2020-06-01"), "");
 
 insert into recipes values(null, "Käsezigarren", 100,  false, true, 40, null, false, 8, "Kräuter hacken, Käse klein bröseln. Kräuter, 
 Käse und Ei in eine Schüssel geben, pfeffern und gut vermischen.;Aus dem Yufka-Teig Rechtecke formen. Auf das untere Ende je ca. 
@@ -79,7 +79,7 @@ die Füllung aufgebraucht ist. Die fertigen Röllchen bei ca. 200°C in den Ofen
 Den Yufka-Teig vor und während der Verarbeitung mit einem feuchten Küchentuch abdecken, damit er nicht rissig wird. Gerissene Stellen 
 lassen sich sonst mit Wasser wieder zuschmieren.;", "3 EL,Petersilie, gehackt;
  3 EL, Minze, gehackt;2 EL, Dill, gehackt;1 Pkg., (360 Gramm, in türkischen Läden), Teig (Yufka-Teig); 400 g, Feta-Käse, möglichst fettarm;
- 1 Stk., Ei(er);Pfeffer;Salz;", date("2020-06-01"));
+ 1 Stk., Ei(er);Pfeffer;Salz;", date("2020-06-01"), "");
  
  insert into recipes values(null, "Käsezigaretten-Börek", 665,  false, true, 40, null, false, 8, "Den Backofen auf 180°C (Ober- und Unterhitze) vorheizen.;Kräuter hacken, Käse klein bröseln. Kräuter, Käse und Ei in eine Schüssel geben, pfeffern und
 gut vermischen.;Aus dem Yufka-Teig Rechtecke formen. Auf das untere Ende je ca. 1 EL von
@@ -93,7 +93,7 @@ Röllchen noch mit Sesam bestreuen. Dieser enthält hochwertige Fette, ist reich
 Ballaststoffen und sorgt so für ein längeres Sättigungsgefühl.;Anschließend auf der mittleren Schiene im Backofen ca. 20-30 min backen.
 ", "3 EL, Petersilie, gehackt;3 EL, Minze, gehackt;2 EL, Dill, gehackt;1 Pck., Teig (Yufka-Teig);400 g, Feta-Käse, möglichst fettarm;1, Ei;Pfeffer;(Öl zum Frittieren);
 zum Bestreichen:1/8 l, Milch, fettreduziert;80 g, Joghurt, fettreduziert;1, Ei;1 EL, Rapsöl;1 Messerspitze, Salz bestreichen;zum Bestreuen:1 EL, Sesamsamen
-", date("2020-06-01"));
+", date("2020-06-01"), "");
 
 insert into recipes values(null, "Tomaten-Mozzarella", 234,  false, true, 10, null, false, null, "Wasche zuerst den Rucola die Tomaten und die Frühlingszwiebel mit kaltem Wasser kurz ab.;
 Danach verteilst du den Rucola auf einer Servierplatte mit höherem Rand.; Anschließend schneidest
@@ -103,7 +103,7 @@ Salz, Pfeffer, Kräuter, Öl und den Balsamico-Essig zusammen mischen und auf de
 Zum Schluss kannst du noch die Parmesanspäne darüber geben, und fertig ist das 10 Minuten
 Gericht.;Viel Spaß beim Nachkochen und guten Appetit!;
 ", "50g Bund Rucola;100g Tomaten;30g Frühlingszwiebel;1 Knoblauchzehe;1 EL (5g) Olivenöl;1 EL (5g) Balsamico-Essig;100g Packung Mozzarella;1 EL (10g) Parmesanspäne zum drüberstreuen;Salz, Pfeffer ;Kräuter (z.B.: Basilikum oder Oregano);
-", date("2020-06-01"));
+", date("2020-06-01"), "");
 
 insert into recipes values(null, "Menemen", 524,  false, true, 30, null, false, null, "Zuerst wird die Zwiebel geschält und ganz fein geschnitten.; 
 Auch die Paprika werden in kleine Würfel geschnitten, nachdem sie gewaschen und vom Kerngehäuse befreit wurden.;
@@ -115,13 +115,13 @@ Hitze reduzieren und die Tomate dazugeben.; Diese sollte so saftig sein, dass da
 Gemüse nun im eigenen Saft garziehen kann.; Ansonsten etwas Wasser oder Brühe dazugeben.;
 Die Eier werden verquirlt (in einer Schüssel verrührt) und zum Stocken in die Pfanne gegeben, 
 sobald die Flüssigkeit verkocht ist.; Mit Salz und Pfeffer gewürzt auf Fladenbrot anrichten.;
-", "3 Stk, Paprikaschote; 1, Zwiebel; 2, Eier;1, Tomate; 1 EL, Olivenöl; 1 Prise, Salz; 1 Prise, Pfeffer; 1 scheibe, Fladenbrot;", date("2020-06-01"));
+", "3 Stk, Paprikaschote; 1, Zwiebel; 2, Eier;1, Tomate; 1 EL, Olivenöl; 1 Prise, Salz; 1 Prise, Pfeffer; 1 scheibe, Fladenbrot;", date("2020-06-01"), "");
 
 insert into recipes values(null, "Nudeln mit Thunfisch", 2683,  false, true, 40, null, true, null, "Du musst die Nudeln in Salzwasser al dente kochen, 
 dann abgießen, und anschließend musst du die Nudeln in Rapsöl schwenken;Als nächstes musst du die Nudeln mit dem Thunfisch vermischen 
 und mit Parmesan, Bergkäse und Mozzarella bestreuen und belegen;Zu guter Letzt musst du die Nudeln bei 220°C im vorgeheizten Backofen
  ca. 25 min. goldgelb überbacken. 
-", "400g, Vollkornnudeln;1 EL, Rapsöl;1 EL, Salz; 1 Dosen, Thunfisch; 1 Kugel, Mozzarella; 150g, Bergkäse;4 EL, Parmesan gerieben;", date("2020-06-01"));
+", "400g, Vollkornnudeln;1 EL, Rapsöl;1 EL, Salz; 1 Dosen, Thunfisch; 1 Kugel, Mozzarella; 150g, Bergkäse;4 EL, Parmesan gerieben;", date("2020-06-01"), "");
 
 insert into recipes values(null, "Toast Hawaii", 206,  false, false, 20, null, true, null, "Als erstes ein kleiner Tipp wie du beim Aufräumen Zeit und Arbeit sparen kannst: Wenn du das
 Toastbrot vorbereitest, kannst du das Backblech als deinen Arbeitsplatz verwenden, so musst du
@@ -133,7 +133,7 @@ Geschmack zu bekommen.;Anschließend gibt man die Toasts auf ein vorbereitetes B
 Arbeitsfläche verwendet hat) und schiebt dieses dann für ca. 10 Minuten bei 180°C bei Ober- und
 Unterhitze in das vorgeheizte Backrohr. Danach werden die leckeren Toasts herausgeben und
 serviert.
-", "10 Scheiben Vollkorn-Toastbrot;10 Scheiben Schinken in Bioqualität;10 Scheiben Gouda (Käsesorte variabel);Eine Ananas;Evtl. Pizzagewürz/Kräuter", date("2020-06-01"));
+", "10 Scheiben Vollkorn-Toastbrot;10 Scheiben Schinken in Bioqualität;10 Scheiben Gouda (Käsesorte variabel);Eine Ananas;Evtl. Pizzagewürz/Kräuter", date("2020-06-01"), "");
 
 insert into recipes values(null, "Low-Carb Pizza", 801,  false, false, 30, null, true, null, "Am Anfang musst du in einer Schüssel 2 Eier verrühren. ;
 Den Thunfisch abtropfen lassen, zu den Eiern geben und alles gut durchmischen.; Die Mischung auf ein Backblech mit Backpapier geben und rund formen.; 
@@ -143,7 +143,7 @@ Die Schinkenscheiben klein reißen und die Pizza damit belegen.; Mit Käse bestr
 Danach die Pizza wieder in den Ofen geben und ca. 20 Min backen, bis das Ei gar ist und der Käse eine schöne goldene Farbe hat.;
 Die Pizza kann nach Geschmack natürlich auch anders belegt werden.; 
 ", "1 ½ Dosen, Thunfisch, im eigenen Saft;3, Eier;2 Scheiben, Kochschinken;80g, Käse, geriebener nach Belieben ;Salz und Pfeffer;
-Oregano;20 g, Tomatensauce;", date("2020-06-01"));
+Oregano;20 g, Tomatensauce;", date("2020-06-01"), "");
 
 insert into recipes values(null, "Wurstsalat", 1044,  false, false, 20, null, true, null, "Schäle den Knoblauch und die Zwiebel und schneide beides in möglichst kleine Würfel. ;
 Gib die Würfel in eine Schüssel und verrühre sie mit Olivenöl.; 
@@ -172,4 +172,4 @@ insert into recipes values(null, "Cacik", 450,  false, true, 15, null, false, nu
 dann den Knoblauch schälen; durch die Knoblauchpresse drücken; und in den Joghurt einrühren; Je nach Geschmack salzen; je nach gewünschter Konsistenz Wasser unterrühren;
 Zum Schluss Dill und Pfefferminze einrühren; oder einfach über den Joghurt streuen;
 ", "500g,Joghurt;300g,Salatgurke;1Bund,Dill;1TL,getrocknete Pfefferminze;2,Knoblauchzehen;3EL,Olivenöl;Salz;Wasser;", 
-date("2020-06-22"));*/
+date("2020-06-22"));

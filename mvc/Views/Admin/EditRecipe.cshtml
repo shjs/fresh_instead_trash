@@ -1,0 +1,67 @@
+﻿@model List<mvc.Models.viewmodel.Recipe>;
+@{
+    ViewData["Title"] = "Edit Recipe";
+}
+
+<div style="margin-top: 150px;"></div>
+
+@if (Model.Count < 1)
+{
+    <p style="margin-top: 150px;">
+        There are no recipes available!
+    </p>
+    }
+    else
+    {
+    <table>
+        <thead style="margin-top:150px;">
+            <tr>
+                <th colspan="7">All recipes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>RecipeID</th>
+                <th>Recipename</th>
+                <th>Calories</th>
+                <th>Instructions</th>
+                <th>Ingredients</th>
+                <th>DateAdded</th>
+                <th>FilePath</th>
+            </tr>
+
+            @foreach (mvc.Models.viewmodel.Recipe rep in Model)
+            {
+                <tr>
+                    <td>@rep.RecipeID</td>
+                    <td>@rep.Recipename</td>
+                    <td>@rep.Calories</td>
+                    <td>@rep.Instructions</td>
+                    <td>@rep.Ingredients</td>
+                    <td>@rep.DateAdded.ToLongDateString()</td>
+                    <td>@rep.FilePath</td>
+                    <td>
+                        <form action="/admin/delete/@rep.RecipeID" method="get">
+                            <input type="submit" value="delete" />
+                        </form>
+                    </td>
+                    <td>
+                        <form action="/admin/editRecipeDetail/@rep.RecipeID" method="get">
+                            <input type="submit"/ value="Update">
+                        </form>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="7">Benutzerverwaltung</th>
+            </tr>
+        </tfoot>
+
+    </table>
+ }
+
+
+

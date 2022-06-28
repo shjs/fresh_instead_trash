@@ -38,6 +38,7 @@ namespace mvc.Controllers
         [HttpPost]
         public IActionResult RegisterRecipe(Recipe rec)
         {
+            if(rec.ImageFile != null) { 
             DateTime d = rec.DateAdded;
             string str = Convert.ToString(d);
             str = str.Replace(" ", "");
@@ -57,7 +58,7 @@ namespace mvc.Controllers
 
             string filepath = "images/rep/" + str + "/" + fileName;
             rec.FilePath = filepath;
-            
+            }
             if (rec == null)
             {
                 return RedirectToAction("RegisterRecipe");
@@ -89,5 +90,104 @@ namespace mvc.Controllers
             }
             return View();
         }
+
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                _rep.Open();
+                Boolean output = _rep.DeleteRecipe(id);
+                if (!output)
+                {
+                    return View("_Message", new Message("Datenbankfehler", "Recipe could not be deleted!"));
+                }
+                else
+                {
+                    return View("_Message", new Message("Erfolgreich", "Recipe is deleted!"));
+                }
+
+            }
+            catch (DbException)
+            {
+                return View("_Message", new Message("Datenbankfehler", "There was a problem with the database!"));
+            }
+            finally
+            {
+                _rep.Close();
+            }
+        }
+
+        public IActionResult Update(Recipe newD)
+        {
+            try
+            {
+                _rep.Open();
+                Boolean output = _rep.ChangeRecipe(newD.RecipeID, newD);
+                if (!output)
+                {
+                    return View("_Message", new Message("Datenbankfehler", "Recipe could not be deleted!"));
+                }
+                else
+                {
+                    return View("_Message", new Message("Erfolgreich", "Recipe is updated!"));
+                }
+
+            }
+            catch (DbException e)
+            {
+                return View("_Message", new Message("Datenbankfehler", e.Message));
+            }
+            finally
+            {
+                _rep.Close();
+            }
+        }
+
+        public IActionResult EditRecipeDetail(int id)
+        {
+            try
+            {
+                _rep.Open();
+                Recipe re = _rep.GetRecipe(id);
+                return View(re);
+            }
+            catch (DbException)
+            {
+                return View("_Message", new Message("Datenbankfehler", "There was a problem with the database!"));
+            }
+            finally
+            {
+                _rep.Close();
+            }
+        }
+
+        public IActionResult EditRecipe()
+        {
+            try
+            {
+                _rep.Open();
+                List<Recipe> repe = _rep.GetAllRecipes();
+                if (repe == null)
+                {
+                    return View("_Message", new Message("Datenbankfehler", "We got an Error!"));
+                }
+                else
+                {
+                    return View(repe);
+                }
+
+            }
+            catch (DbException)
+            {
+                return View("_Message", new Message("Datenbankfehler", "We got an Error!"));
+            }
+            finally
+            {
+                _rep.Close();
+            }
+
+        }
+
+
     }
 }
