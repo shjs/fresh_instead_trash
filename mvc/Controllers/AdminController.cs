@@ -38,29 +38,26 @@ namespace mvc.Controllers
         [HttpPost]
         public IActionResult RegisterRecipe(Recipe rec)
         {
-            /*string wwwPath = this._webhost.WebRootPath;
-            string contentPath = this._webhost.ContentRootPath;
-
-            DateTime d = eins.Datum;
+            DateTime d = rec.DateAdded;
             string str = Convert.ToString(d);
             str = str.Replace(" ", "");
             str = str.Replace(":", "");
 
-            string path = Path.Combine(this._webhost.WebRootPath, "multimedia\\img\\Einsatz\\" + str);
+            string path = Path.Combine(this._webhost.WebRootPath, "images\\rep\\" + str);
 
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
-            string fileName = Path.GetFileName(eins.ImageFile.FileName);
+            string fileName = Path.GetFileName(rec.ImageFile.FileName);
             using (FileStream stream = new FileStream(Path.Combine(path, fileName), FileMode.Create))
             {
-                eins.ImageFile.CopyTo(stream);
+                rec.ImageFile.CopyTo(stream);
             }
 
-            string filepath = "~/multimedia/img/Einsatz/" + str + "/" + fileName;
-            eins.FilePath = filepath;
-            */
+            string filepath = "images/rep/" + str + "/" + fileName;
+            rec.FilePath = filepath;
+            
             if (rec == null)
             {
                 return RedirectToAction("RegisterRecipe");

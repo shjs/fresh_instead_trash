@@ -25,11 +25,13 @@ namespace mvc.Models.viewmodel
         public string Instructions { get; set; }
         public string Ingredients { get; set; }
         public DateTime DateAdded { get; set; }
+
+        public string FilePath { get; set; }
         public IFormFile ImageFile { get; set; }
 
-        public Recipe() : this(0, "", 0, false, false, 0.0m, 0, null, true,null, "", "", DateTime.Now) { }
+        public Recipe() : this(0, "", 0, false, false, 0.0m, 0, null, true,null, "", "", DateTime.Now, "") { }
         public Recipe(int recipeID, string recipename, int calories, bool vegan, bool vegetarian, decimal price,
-            int duration, Occasion? occasion, bool regional, Origin? origin, string instructions, string ingredients, DateTime dateAdded)
+            int duration, Occasion? occasion, bool regional, Origin? origin, string instructions, string ingredients, DateTime dateAdded, string filepath)
         {
             this.RecipeID = recipeID;
             this.Recipename = recipename;
@@ -44,6 +46,7 @@ namespace mvc.Models.viewmodel
             this.Instructions = instructions;
             this.Ingredients = ingredients;
             this.DateAdded = DateTime.Now;
+            this.FilePath = filepath;
         }
     }
 }

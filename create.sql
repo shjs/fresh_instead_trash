@@ -1,7 +1,6 @@
-create database fresh;
 
-drop table recipes;
-select * from recipes;
+Select * FROM recipes;
+
 use dipl_database;
 create table recipes(
 id int not null auto_increment,
@@ -16,6 +15,7 @@ origin tinyint null,
 instruction varchar(10000),
 ingredients varchar(1000),
 dateadded date,
+filepath varchar(100),
 
 constraint id_PK primary key(id)
 )engine=InnoDB;
@@ -47,7 +47,7 @@ vermischst sie gemeinsam mit Frischkäse und der Zucchini-Zwiebel-Masse zu einem
 Aufstrich eine Prise Paprikapulver und einen halben Teelöffel Salz hinzu, mischst erneut und lässt die Mischung für eine Stunde im Kühlschrank stehen; 
 Der Aufstrich lässt sich auch nach deinem Belieben scharf würzen. Dafür ersetzt du das Paprikapulver gegen die scharfe Variante;Wir hoffen, 
 dass dieses Rezept bei dir gut ankommt und die Zucchinis ihre gesunde Wirkung entfalten können!", "200g, Zucchini; Eine kleine, Zwiebel;
-75g, Frischkäse; 75g, Magertopfen; Einen Bund, Schnittlauch; Paprikapulver; Salz;", date("2020-06-01"));
+75g, Frischkäse; 75g, Magertopfen; Einen Bund, Schnittlauch; Paprikapulver; Salz;", date("2020-06-01"), "");
 
 insert into recipes values(null, "Zucchini Fries", 692,  false, true, 30, null, false, null, "Heize zuerst den Ofen auf 220°C vor; Schneide dann die 
 Zucchini in kleine Streifen(Frie´s); Dann nimmst du dir eine große Schüssel und gibst das Paniermehl, den 
@@ -57,8 +57,9 @@ und umhüllst sie gut mit den Eiern, bevor du sie in den Paniermix dippst; Lege 
 Zucchini auf ein Backblech und backe sie für 15-20 Minuten; In der Zwischenzeit 
 kannst du dir einen leckeren Joghurtdip dazu anrühren;
 ","400g, Zucchini; 50g, Tasse Paniermehl; 40g, Tasse Parmesan;1 Löffel, Knoblauchpulver;1 Löffel, getrocknetes Basilikum;1 Teelöffel, Salz;1 Teelöffel, Pfeffer; 
-1, Eier;250g, fettarmes Joghurt;1 Löffel, Zitronensaft;2 Bund, frischen Schnittlauch;Ein bisschen, Salz; Ein bisschen, Pfeffer;", date("2020-06-01"));
+1, Eier;250g, fettarmes Joghurt;1 Löffel, Zitronensaft;2 Bund, frischen Schnittlauch;Ein bisschen, Salz; Ein bisschen, Pfeffer;", date("2020-06-01"), "");
 
+/*
 insert into recipes values(null, "Veganer Kaiserschmarrn", 360,  true, true, 20, null, true, 0, "Zuerst verrührst du die Sojamilch und das Sojamehl 
 gut in einer Schüssel und gibst danach den braunen Zucker, Mehl, das Backpulver und die Rosinen hinzu;Gib in eine beschichtete Pfanne etwas 
 Rapsöl hinein und lasse sie heiß werden.;Sobald du mit dem Eingießen des Teigs beginnst, reduziere die Hitze leicht, damit die Unterseite des
@@ -171,4 +172,4 @@ insert into recipes values(null, "Cacik", 450,  false, true, 15, null, false, nu
 dann den Knoblauch schälen; durch die Knoblauchpresse drücken; und in den Joghurt einrühren; Je nach Geschmack salzen; je nach gewünschter Konsistenz Wasser unterrühren;
 Zum Schluss Dill und Pfefferminze einrühren; oder einfach über den Joghurt streuen;
 ", "500g,Joghurt;300g,Salatgurke;1Bund,Dill;1TL,getrocknete Pfefferminze;2,Knoblauchzehen;3EL,Olivenöl;Salz;Wasser;", 
-date("2020-06-22"));
+date("2020-06-22"));*/

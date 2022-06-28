@@ -67,39 +67,46 @@
         <main style="margin-top: 40px; width: 90%; margin-left: 5%; margin-bottom: 100px; ">
             <h1 style="text-align: center; background-color: lightslategrey"><strong>Recipe</strong></h1>
             <div class="row">
-                @{ String[] rep = { "1.Rezept", "2.Rezept", "3.Rezept", "4.Rezept", "5.Rezept" }; }
-                @{foreach (mvc.Models.viewmodel.Recipe re in Model.Recipes)
+                @{if(Model.Recipes != null) { 
+                    foreach (mvc.Models.viewmodel.Recipe re in Model.Recipes)
                     {
+                        var s = "D" + re.RecipeID;
                         <div class="col-lg-3">
-                            <div class="offcanvas offcanvas-end" id="demo">
-                                <div class="offcanvas-header">
-                                    <h1 class="offcanvas-title">@re.Recipename</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
-                                </div>
-                                <div class="offcanvas-body">
-                                    <p class ="card-body" style="margin-right: 5%">Vegan: @re.Vegan</p> <p>Vegetarian: @re.Vegetarian</p><br />
-                                    <p class ="card-body" style="margin-right: 5%">Calories: @re.Calories</p> <p>Occasion: @re.Occasion</p><br />
-                                    <div class ="card-body"><Strong>Ingredients:</Strong> @re.Ingredients</div><br />
-                                    <div class ="card-body"><Strong>Industructions:</Strong> @re.Instructions</div>
-                                </div>
-                            </div>
-
                             <div class="container-fluid mt-4">
                                 <div class="card" style="width:300px;">
-                                    <img class="card-img-top" src="https://cdn.pixabay.com/photo/2022/05/07/20/22/flowers-7180947_960_720.jpg" alt="Card image" style="width:100%; text-align:center">
+                                    <img class="card-img-top" src="@re.FilePath" alt="Card image" style="width:100%; text-align:center">
                                     <div class="card-body">
+
                                         <h4 class="card-title">@re.Recipename</h4>
                                         <p class="card-text">Duration: @re.Duration</p>
                                         <p class="card-text">Occasion: @re.Occasion</p>
                                         <p class="card-text">Calories: @re.Calories</p>
-                                        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#demo">
+                                        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#@s">
                                             Mehr Lesen
                                         </button>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="offcanvas offcanvas-end" id="@s">
+                                <div class="offcanvas-header">
+                                    <h1 class="offcanvas-title">@re.Recipename</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                                </div>
+                                <div class="offcanvas-body">
+                                    <p class="card-body" style="margin-right: 5%">Vegan: @re.Vegan</p> <p>Vegetarian: @re.Vegetarian</p><br />
+                                    <p class="card-body" style="margin-right: 5%">Calories: @re.Calories</p> <p>Occasion: @re.Occasion</p><br />
+                                    <div class="card-body"><Strong>Ingredients:</Strong> @re.Ingredients</div><br />
+                                    <div class="card-body"><Strong>Industructions:</Strong> @re.Instructions</div>
+                                </div>
+                            </div>
                         </div>
-                    }
+                        }
+            }
+            else
+            {
+                <div style="background-color: white;">Unfortunately, we can't follow your requst. Come back later, maybe we will have you covered next time.</div>
+            }
                 }
             </div>
         </main>

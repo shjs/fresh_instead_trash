@@ -83,6 +83,7 @@ namespace mvc.Models.db
                             Instructions = Convert.ToString(reader["instruction"]),
                             Ingredients = Convert.ToString(reader["ingredients"]),
                             DateAdded = Convert.ToDateTime(reader["dateadded"]),
+                            FilePath = Convert.ToString(reader["filepath"]),
                         });
                     }
                 }
@@ -128,6 +129,7 @@ namespace mvc.Models.db
                         Instructions = Convert.ToString(reader["instruction"]),
                         Ingredients = Convert.ToString(reader["ingredients"]),
                         DateAdded = Convert.ToDateTime(reader["dateadded"]),
+                        FilePath = Convert.ToString(reader["filepath"]),
                     };
                 }
                 return recipe != null ? recipe : null;
@@ -147,7 +149,7 @@ namespace mvc.Models.db
             try
             {
                 MySqlCommand cmdInsert = this._connection.CreateCommand();
-                cmdInsert.CommandText = "INSERT INTO recipes VALUES(null,@recipename,@calories, @vegan, @vegetarian, @duration, @occasion ,@regional, @origin, @instruction, @ingredients, @dateadded)";
+                cmdInsert.CommandText = "INSERT INTO recipes VALUES(null,@recipename,@calories, @vegan, @vegetarian, @duration, @occasion ,@regional, @origin, @instruction, @ingredients, @dateadded, @filepath)";
 
                 cmdInsert.Parameters.AddWithValue("recipename", recipeToInsert.Recipename);
                 cmdInsert.Parameters.AddWithValue("calories", recipeToInsert.Calories);
@@ -161,6 +163,7 @@ namespace mvc.Models.db
                 cmdInsert.Parameters.AddWithValue("instruction", recipeToInsert.Instructions);
                 cmdInsert.Parameters.AddWithValue("ingredients", recipeToInsert.Ingredients);
                 cmdInsert.Parameters.AddWithValue("dateadded", recipeToInsert.DateAdded);
+                cmdInsert.Parameters.AddWithValue("filepath", recipeToInsert.FilePath);
                 return cmdInsert.ExecuteNonQuery() == 1;
             }
             catch (Exception)
@@ -210,6 +213,7 @@ namespace mvc.Models.db
                             Instructions = Convert.ToString(reader["instruction"]),
                             Ingredients = Convert.ToString(reader["ingredients"]),
                             DateAdded = Convert.ToDateTime(reader["dateadded"]),
+                            FilePath = Convert.ToString(reader["filepath"]),
                         });
                     }
                 }
@@ -257,6 +261,7 @@ namespace mvc.Models.db
                             Instructions = Convert.ToString(reader["instruction"]),
                             Ingredients = Convert.ToString(reader["ingredients"]),
                             DateAdded = Convert.ToDateTime(reader["dateadded"]),
+                            FilePath = Convert.ToString(reader["filepath"]),
                         });
                     }
                 }
@@ -305,6 +310,7 @@ namespace mvc.Models.db
                             Instructions = Convert.ToString(reader["instruction"]),
                             Ingredients = Convert.ToString(reader["ingredients"]),
                             DateAdded = Convert.ToDateTime(reader["dateadded"]),
+                            FilePath = Convert.ToString(reader["filepath"]),
 
                         });
                     }
@@ -351,6 +357,7 @@ namespace mvc.Models.db
                             Instructions = Convert.ToString(reader["instruction"]),
                             Ingredients = Convert.ToString(reader["ingredients"]),
                             DateAdded = Convert.ToDateTime(reader["dateadded"]),
+                            FilePath = Convert.ToString(reader["filepath"]),
                         });
                     }
                 }
@@ -397,7 +404,7 @@ namespace mvc.Models.db
                             Instructions = Convert.ToString(reader["instruction"]),
                             Ingredients = Convert.ToString(reader["ingredients"]),
                             DateAdded = Convert.ToDateTime(reader["dateadded"]),
-
+                            FilePath = Convert.ToString(reader["filepath"]),
                         });
                     }
                 }

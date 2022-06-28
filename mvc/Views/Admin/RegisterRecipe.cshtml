@@ -52,39 +52,41 @@
                         <div class="valid-feedback">Valid.</div>
                         <div class="invalid-feedback">Falsches Format</div>
                     </div>
-                    <div class="mb-8">
-                        <label asp-for="Regional" class="form-check-label">Regional:</label>
-                        <input type="checkbox" asp-for="Regional" class="form-check-input" />
-                        <span asp-validation-for="Regional"></span>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Bitte ausfüllen!</div>
-                    </div>
-                    <div class="mb-8">
-                        <label asp-for="Origin">Origin</label> <br />
-                        <select asp-for="Origin">
-                            <option>Austria</option>
-                            <option>Germany</option>
-                            <option>Russia</option>
-                            <option>Mexico</option>
-                            <option>Croatia</option>
-                            <option>Japan</option>
-                            <option>Serbia</option>
-                            <option>Spain</option>
-                            <option>Turkey</option>
-                            <option>USA</option>
-                            <option>China</option>
-                        </select>
-                    </div>
-                    <div class="mb-8">
-                        <label asp-for="Occasion">Occasion</label> <br />
-                        <select asp-for="Occasion">
-                            <option>Breakfast</option>
-                            <option>Dinner</option>
-                            <option>Lunch</option>
-                            <option>Picknick</option>
-                            <option>Snack</option>
-                            <option>notSpecified</option>
-                        </select>
+                    <div class="mb-8 row">
+                        <div class="col">
+                            <label asp-for="Regional" class="form-check-label">Regional:</label>
+                            <input type="checkbox" asp-for="Regional" class="form-check-input" />
+                            <span asp-validation-for="Regional"></span>
+                            <div class="valid-feedback">Valid.</div>
+                            <div class="invalid-feedback">Bitte ausfüllen!</div>
+                        </div>
+                        <div class="col">
+                            <label asp-for="Origin">Origin</label> <br />
+                            <select asp-for="Origin">
+                                <option>Austria</option>
+                                <option>Germany</option>
+                                <option>Russia</option>
+                                <option>Mexico</option>
+                                <option>Croatia</option>
+                                <option>Japan</option>
+                                <option>Serbia</option>
+                                <option>Spain</option>
+                                <option>Turkey</option>
+                                <option>USA</option>
+                                <option>China</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label asp-for="Occasion">Occasion</label> <br />
+                            <select asp-for="Occasion">
+                                <option>Breakfast</option>
+                                <option>Dinner</option>
+                                <option>Lunch</option>
+                                <option>Picknick</option>
+                                <option>Snack</option>
+                                <option>notSpecified</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="mb-8">
                         <label asp-for="Instructions" class="form-label">Instructions:</label>
