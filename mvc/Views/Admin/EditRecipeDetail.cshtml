@@ -16,6 +16,18 @@
                 <input type="text" asp-for="Recipename" class="form-control" value="@Model.Recipename" />
                 <span asp-validation-for="Recipename"></span>
             </div>
+            <div class="mb-8 row">
+                <div class="col">
+                    <label asp-for="Vegan" class="form-check-label">Vegan:</label>
+                    <input type="checkbox" asp-for="Vegan" class="form-check-input" value="@Model.Vegan" />
+                    <span asp-validation-for="Vegan"></span>
+                </div>
+                <div class="col">
+                    <label asp-for="Vegetarian" class="form-check-label">Vegetarian:</label>
+                    <input type="checkbox" asp-for="Vegetarian" class="form-check-input" value="@Model.Vegetarian" />
+                    <span asp-validation-for="Vegetarian"></span>
+                </div>
+            </div>
             <div class="mb-8">
                 <label asp-for="Calories" class="form-label">Calories:</label>
                 <input type="number" asp-for="Calories" class="form-control" value="@Model.Calories" />
@@ -25,6 +37,13 @@
                 <label asp-for="Duration" class="form-label">Duration</label>
                 <input type="number" asp-for="Duration" class="form-control" value="@Model.Duration" />
                 <span asp-validation-for="Duration"></span>
+            </div>
+            <div class="mb-8 row">
+                <div class="col">
+                    <label asp-for="Regional" class="form-check-label">Regional:</label>
+                    <input type="checkbox" asp-for="Regional" class="form-check-input" value="@Model.Regional"/>
+                    <span asp-validation-for="Regional"></span>
+                </div>
             </div>
             <div class="mb-8">
                 <label asp-for="Instructions" class="form-label">Instructions:</label>
@@ -37,7 +56,7 @@
                 <span asp-validation-for="Ingredients"></span>
             </div>
             <div class="mb-8">
-                <label asp-for="FilePath" class="form-label">Ingredients:</label>
+                <label asp-for="FilePath" class="form-label">Filepath:</label>
                 <textarea type="text" asp-for="FilePath" class="form-control" placeholder="@Model.FilePath"></textarea>
                 <span asp-validation-for="FilePath"></span>
             </div>

@@ -39,10 +39,13 @@ namespace mvc.Models.db
             try
             {
                 MySqlCommand cmdInsert = this._connection.CreateCommand();
-                cmdInsert.CommandText = "UPDATE recipes SET recipename = @recipename, calories = @calories, duration = @duration, instruction = @instruction, ingredients = @ingredients , dateadded = @dateadded, filepath = @filepath WHERE id = @id;";
+                cmdInsert.CommandText = "UPDATE recipes SET recipename = @recipename, vegan = @vegan, vegetarian = @vegetarian, calories = @calories,  duration = @duration, regional = @regional, instruction = @instruction, ingredients = @ingredients , dateadded = @dateadded, filepath = @filepath WHERE id = @id;";
                 cmdInsert.Parameters.AddWithValue("recipename", newRecipeData.Recipename);
+                cmdInsert.Parameters.AddWithValue("vegan", newRecipeData.Vegan);
+                cmdInsert.Parameters.AddWithValue("vegetarian", newRecipeData.Vegetarian);
                 cmdInsert.Parameters.AddWithValue("calories", newRecipeData.Calories);
                 cmdInsert.Parameters.AddWithValue("duration", newRecipeData.Duration);
+                cmdInsert.Parameters.AddWithValue("regional", newRecipeData.Regional);
                 cmdInsert.Parameters.AddWithValue("instruction", newRecipeData.Instructions);
                 cmdInsert.Parameters.AddWithValue("ingredients", newRecipeData.Ingredients);
                 cmdInsert.Parameters.AddWithValue("dateadded", newRecipeData.DateAdded);
@@ -171,7 +174,6 @@ namespace mvc.Models.db
             {
                 MySqlCommand cmdInsert = this._connection.CreateCommand();
                 cmdInsert.CommandText = "INSERT INTO recipes VALUES(null,@recipename,@calories, @vegan, @vegetarian, @duration, @occasion ,@regional, @origin, @instruction, @ingredients, @dateadded, @filepath)";
-
                 cmdInsert.Parameters.AddWithValue("recipename", recipeToInsert.Recipename);
                 cmdInsert.Parameters.AddWithValue("calories", recipeToInsert.Calories);
                 cmdInsert.Parameters.AddWithValue("vegan", recipeToInsert.Vegan);
